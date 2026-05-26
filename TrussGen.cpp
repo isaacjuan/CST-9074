@@ -915,13 +915,16 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
     lx /= len; ly /= len; lz /= len;
     double dot = -lz;
     double angle = acos(fmin(fmax(dot, -1.0), 1.0));
-    double ax = -ly, ay = lx, az = 0;
+    double ax = ly, ay = -lx, az = 0;
     double alen = sqrt(ax*ax + ay*ay);
     if (alen > 0.0001) { ax /= alen; ay /= alen; }
     else { ax = 0; ay = 1; az = 0; }
 
     fprintf(f, "<Scene>\n");
+    fprintf(f, "<NavigationInfo headlight=\"true\"></NavigationInfo>\n");
     fprintf(f, "<Background skyColor=\"0.12 0.12 0.12\"></Background>\n");
+    fprintf(f, "<DirectionalLight direction=\"-0.5 -0.35 -1\" intensity=\"0.8\"></DirectionalLight>\n");
+    fprintf(f, "<DirectionalLight direction=\"0.5 0.35 1\" intensity=\"0.3\"></DirectionalLight>\n");
     fprintf(f, "<Viewpoint position=\"%.2f %.2f %.2f\" orientation=\"%.4f %.4f %.4f %.4f\" fieldOfView=\"0.5\"></Viewpoint>\n",
             vx, vy, vz, ax, ay, az, angle);
 
@@ -938,11 +941,16 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
     };
 
     auto emitLabel = [&](double x, double y, double z, const char *text, double size) {
+        std::string escaped;
+        for (const char *p = text; *p; p++) {
+            if (*p == '"') escaped += "\"\"";
+            else escaped += *p;
+        }
         fprintf(f, "<Billboard axisOfRotation=\"0 0 0\">"
                 "<Transform translation=\"%.0f %.0f %.3f\">"
                 "<Shape><Appearance><Material emissiveColor=\"1 1 1\"></Material></Appearance>"
-                "<Text string='\"%s\"'><FontStyle size=\"%.0f\" family=\"'SANS'\"></FontStyle></Text>"
-                "</Shape></Transform></Billboard>\n", x, y, z, text, size);
+                "<Text string='\"%s\"'><FontStyle size=\"%.0f\" family='\"SANS\"'></FontStyle></Text>"
+                "</Shape></Transform></Billboard>\n", x, y, z, escaped.c_str(), size);
     };
 
     // Pieces
@@ -959,7 +967,7 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
         else if (p.type == "BottomChord") { r = 89; g = 146; b = 191; }
         else { r = 146; g = 191; b = 89; }
 
-        fprintf(f, "<Shape><Appearance><Material diffuseColor=\"%.3f %.3f %.3f\" transparency=\"0.22\"></Material></Appearance>\n",
+        fprintf(f, "<Shape><Appearance><Material diffuseColor=\"%.3f %.3f %.3f\"></Material></Appearance>\n",
                 r/255.0, g/255.0, b/255.0);
         fprintf(f, "<IndexedFaceSet solid=\"false\" coordIndex=\"\n");
         for (int i = 0; i < N; i++) fprintf(f, "%d ", i);
@@ -1038,11 +1046,7 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
     double legY = yMax + 300.0;
     for (int i = 0; i < 3; i++) {
         double lx = xMin + 100.0;
-        fprintf(f, "<Transform translation=\"%.0f %.0f %.3f\">"
-                "<Shape><Appearance><Material diffuseColor=\"%.3f %.3f %.3f\"></Material></Appearance>"
-                "<Box size=\"100 60 0.1\"></Box></Shape></Transform>\n",
-                lx + 50, legY + 30, dimZ, leg[i].r/255.0, leg[i].g/255.0, leg[i].b/255.0);
-        emitLabel(lx + 150, legY + 30, dimZ, leg[i].name, 60);
+        emitLabel(lx, legY + 30, dimZ, leg[i].name, 60);
         legY += 100.0;
     }
 
@@ -1056,7 +1060,7 @@ static bool saveX3D(const char *path, const TrussData &data) {
     FILE *f = nullptr;
     if (fopen_s(&f, path, "wb") != 0 || !f) return false;
     fprintf(f, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-    fprintf(f, "<X3D profile=\"Immersive\" version=\"3.3\">\n");
+    fprintf(f, "<X3D profile=\"Immersive\" version=\"3.3\" xmlns=\"http://www.web3d.org/specifications/x3d-namespace\">\n");
     writeX3DContent(f, data);
     fprintf(f, "</X3D>\n");
     fclose(f);
@@ -1064,6 +1068,20 @@ static bool saveX3D(const char *path, const TrussData &data) {
 }
 
 static bool saveHTML(const char *path, const TrussData &data) {
+    // Read x3dom.js from the same directory as the output (or cwd)
+    FILE *jsf = nullptr;
+    if (fopen_s(&jsf, "x3dom.js", "rb") != 0 || !jsf) {
+        fprintf(stderr, "ERROR: x3dom.js not found. Download from https://cdn.jsdelivr.net/npm/x3dom@1.8.2/x3dom.js\n");
+        return false;
+    }
+    fseek(jsf, 0, SEEK_END);
+    long jsLen = ftell(jsf);
+    fseek(jsf, 0, SEEK_SET);
+    std::vector<char> jsBuf((size_t)jsLen + 1);
+    fread(jsBuf.data(), 1, (size_t)jsLen, jsf);
+    fclose(jsf);
+    jsBuf[jsLen] = 0;
+
     FILE *f = nullptr;
     if (fopen_s(&f, path, "wb") != 0 || !f) return false;
     fprintf(f,
@@ -1071,11 +1089,12 @@ static bool saveHTML(const char *path, const TrussData &data) {
         "<html><head>\n"
         "<meta charset=\"UTF-8\">\n"
         "<title>TrussGen - 3D Truss Viewer</title>\n"
-        "<script src=\"https://cdn.jsdelivr.net/npm/x3dom@1.8.2/dist/x3dom.min.js\"></script>\n"
-        "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/x3dom@1.8.2/dist/x3dom.min.css\">\n"
-        "<style>body{margin:0;overflow:hidden;background:#1e1e1e}x3d{width:100vw;height:100vh;border:none}</style>\n"
+        "<style>body{margin:0;overflow:hidden;background:#1e1e1e}"
+        "x3d{width:100vw;height:100vh;border:none;display:block}</style>\n"
+        "<script>\n%s</script>\n"
         "</head><body>\n"
-        "<x3d width=\"100%%\" height=\"100%%\">\n"
+        "<x3d width=\"100%%\" height=\"100%%\">\n",
+        jsBuf.data()
     );
     writeX3DContent(f, data);
     fprintf(f, "</x3d>\n</body></html>\n");

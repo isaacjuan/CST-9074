@@ -1,57 +1,62 @@
 # CST-9074
 
-This workspace contains a floor truss component data file (`FT1.json`) and a Qt 6 C++ viewer application.
+TrussGen — standalone CLI that generates 2D (PNG/SVG) and 3D (X3D/HTML with X3DOM) output from floor/roof truss JSON data. No external runtime dependencies beyond GDI+ (PNG).
 
-## Project Structure
-
-- `FT1.json` — floor truss data exported from an engineering/truss-design app (compatibility version `2026.3.0.66`)
-- `TrussViewer` — Qt 6 Widgets app that loads FT1.json and renders the truss graphically
-- `TrussGen` — CLI tool that generates a PNG image from a truss JSON file
-
-## Build
-
-Uses Qt 6.11.0 MSVC 2022 64-bit at `D:\Qt\6.11.0\msvc2022_64`.
+## Quick Start
 
 ```
-cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -DCMAKE_PREFIX_PATH="D:\Qt\6.11.0\msvc2022_64"
-cmake --build build --config Debug
+TrussGen.exe FT1.json              # → FT1.png
+TrussGen.exe FT1.json out.svg      # SVG
+TrussGen.exe FT1.json out.x3d      # X3D (standalone)
+TrussGen.exe FT1.json out.html     # HTML with embedded X3DOM
 ```
 
-Run: `.\build\Debug\TrussViewer.exe`
+Output format detected from file extension.
 
-### TrussGen (CLI image generator)
-
-```
-.\build\Release\TrussGen.exe input.json [output.png]
+## Build (standalone EXE)
 
 ```
-.\build\Release\TrussGen.exe input.json output.svg  # SVG output
+cl /EHsc /O2 /std:c++17 /DUNICODE /D_UNICODE /utf-8 /Fe:TrussGen.exe TrussGen.cpp /link gdiplus.lib
 ```
 
-If `output.png` is omitted, it derives the name from the input file. Output format (PNG or SVG) is detected from the file extension.
+From a VS 2022 x64 developer prompt. Also distributable as `dist-trussgen\TrussGen.exe` (218 KB, zero-deps).
 
-Also available as a standalone zero-dependency EXE (`dist-trussgen\TrussGen.exe`, 218 KB). No DLLs needed.
+## 3D Output Validation
 
-## Distribute
-
-Build Release and deploy:
+Use [Castle Model Viewer](https://castle-engine.io/castle-model-viewer) (v5.2.0 installed at `C:\Users\jissi\.local\bin\castle-model-viewer.exe`):
 
 ```
-cmake --build build --config Release
-copy build\Release\TrussViewer.exe dist\
-copy build\Release\TrussGen.exe dist\
-D:\Qt\6.11.0\msvc2022_64\bin\windeployqt.exe dist\TrussViewer.exe --no-translations
-robocopy "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Redist\MSVC\14.44.35112\x64\Microsoft.VC143.CRT" dist\ *.dll
+castle-model-viewer.exe scene.x3d --hide-extras --screenshot 0 out.png
 ```
 
-Zip `dist\` — it's fully self-contained with both tools.
+Screenshot sizes: ~5 KB = blank/empty; 15 KB+ = rendered scene with content. The `--hide-extras` flag disables the default bounding‑box overlay (green wireframe that appears around every model).
 
-For a tiny TrussGen-only deploy, ship just `dist-trussgen\TrussGen.exe` (218 KB, no dependencies).
+## Known Quirks
+
+- **X3D MFString quoting**: XML `family='"SANS"'` → MFString `["SANS"]`. Use double-quotes as MFString delimiters inside the XML attribute value.
+- **X3D inch‑mark escaping**: Literal `"` in text content → `""` (per X3D MFString spec).
+- **No self-closing tags in HTML**: X3DOM traverses the DOM tree; `<Tag/>` is parsed as an unclosed start tag in HTML5. Always use `<Tag></Tag>`.
+- **Viewpoint orientation axis**: Computed as `(ly, -lx, 0)` (cross product of default -Z direction and camera-to-center vector), normalized. Negating this axis causes the camera to look away from the scene.
+- **x3dom.js** must be in working directory at HTML generation time; inlined into the output for offline use.
+- **Castle Model Viewer `--screenshot`** works reliably for headless rendering; the before/after screenshot size difference confirmed the orientation fix.
+- **Castle Model Viewer default bounding box**: Shown as a green wireframe box around every model. Disable with `--hide-extras` or View → Show Bounding Box in the GUI.
 
 ## Truss Data Format
 
-Each piece in `PieceData[]` has:
+Each piece in `PieceData[]`:
 - `Type`: TopChord / BottomChord / Web
-- `EndCap.Positive[]` and `EndCap.Negative[]` — arrays of `{x, y}` defining the two ends of the piece
+- `EndCap.Positive[]` / `EndCap.Negative[]` — `{x,y}` defining the two ends
+- `UserThickness`: piece thickness in inches (defaults from root `Thickness`)
 - `EngineeringLabel`: piece identifier
-- Coordinates: X 0–120 (span), Y roughly -7.25 to 16.75 (height); Z always 0 (flat truss)
+- Coordinates in inches (×100 to integers internally); Z always 0
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `TrussGen.cpp` | All logic: JSON parse, Canvas (GDI+), savePNG/SVG/X3D/HTML, main |
+| `FT1.json` | Floor truss sample (span 120", height 24", thick 3.5") |
+| `T04.json` | Roof truss sample (span 432", height 94", thick 1.5") |
+| `x3dom.js` | X3DOM 1.8.2 library, read at HTML generation time |
+| `AGENTS.md` | This file |
+| `dist-trussgen/` | Standalone EXE deployment (no DLLs) |
