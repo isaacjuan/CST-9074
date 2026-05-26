@@ -921,8 +921,8 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
     else { ax = 0; ay = 1; az = 0; }
 
     fprintf(f, "<Scene>\n");
-    fprintf(f, "<Background skyColor=\"0.12 0.12 0.12\"/>\n");
-    fprintf(f, "<Viewpoint position=\"%.2f %.2f %.2f\" orientation=\"%.4f %.4f %.4f %.4f\" fieldOfView=\"0.5\"/>\n",
+    fprintf(f, "<Background skyColor=\"0.12 0.12 0.12\"></Background>\n");
+    fprintf(f, "<Viewpoint position=\"%.2f %.2f %.2f\" orientation=\"%.4f %.4f %.4f %.4f\" fieldOfView=\"0.5\"></Viewpoint>\n",
             vx, vy, vz, ax, ay, az, angle);
 
     double halfMaxZ = data.thickness * 50.0;
@@ -930,9 +930,9 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
     double dimZ = halfMaxZ + 50.0;
 
     auto emitLine = [&](double x1, double y1, double x2, double y2, double z, const char *color) {
-        fprintf(f, "<Shape><Appearance><Material emissiveColor=\"%s\"/></Appearance>"
+        fprintf(f, "<Shape><Appearance><Material emissiveColor=\"%s\"></Material></Appearance>"
                 "<IndexedLineSet coordIndex=\"0 1 -1\">"
-                "<Coordinate point=\"%.0f %.0f %.3f %.0f %.0f %.3f\"/>"
+                "<Coordinate point=\"%.0f %.0f %.3f %.0f %.0f %.3f\"></Coordinate>"
                 "</IndexedLineSet></Shape>\n",
                 color, x1, y1, z, x2, y2, z);
     };
@@ -940,8 +940,8 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
     auto emitLabel = [&](double x, double y, double z, const char *text, double size) {
         fprintf(f, "<Billboard axisOfRotation=\"0 0 0\">"
                 "<Transform translation=\"%.0f %.0f %.3f\">"
-                "<Shape><Appearance><Material emissiveColor=\"1 1 1\"/></Appearance>"
-                "<Text string='\"%s\"'><FontStyle size=\"%.0f\" family=\"'SANS'\"/></Text>"
+                "<Shape><Appearance><Material emissiveColor=\"1 1 1\"></Material></Appearance>"
+                "<Text string='\"%s\"'><FontStyle size=\"%.0f\" family=\"'SANS'\"></FontStyle></Text>"
                 "</Shape></Transform></Billboard>\n", x, y, z, text, size);
     };
 
@@ -959,7 +959,7 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
         else if (p.type == "BottomChord") { r = 89; g = 146; b = 191; }
         else { r = 146; g = 191; b = 89; }
 
-        fprintf(f, "<Shape><Appearance><Material diffuseColor=\"%.3f %.3f %.3f\" transparency=\"0.22\"/></Appearance>\n",
+        fprintf(f, "<Shape><Appearance><Material diffuseColor=\"%.3f %.3f %.3f\" transparency=\"0.22\"></Material></Appearance>\n",
                 r/255.0, g/255.0, b/255.0);
         fprintf(f, "<IndexedFaceSet solid=\"false\" coordIndex=\"\n");
         for (int i = 0; i < N; i++) fprintf(f, "%d ", i);
@@ -975,7 +975,7 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
             fprintf(f, "%.0f %.0f %.3f\n", (double)pts[i].x, (double)pts[i].y, halfZ);
         for (int i = 0; i < N; i++)
             fprintf(f, "%.0f %.0f %.3f\n", (double)pts[i].x, (double)pts[i].y, -halfZ);
-        fprintf(f, "\"/></IndexedFaceSet></Shape>\n");
+        fprintf(f, "\"></Coordinate></IndexedFaceSet></Shape>\n");
     }
 
     // Grid lines
@@ -1039,8 +1039,8 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
     for (int i = 0; i < 3; i++) {
         double lx = xMin + 100.0;
         fprintf(f, "<Transform translation=\"%.0f %.0f %.3f\">"
-                "<Shape><Appearance><Material diffuseColor=\"%.3f %.3f %.3f\"/></Appearance>"
-                "<Box size=\"100 60 0.1\"/></Shape></Transform>\n",
+                "<Shape><Appearance><Material diffuseColor=\"%.3f %.3f %.3f\"></Material></Appearance>"
+                "<Box size=\"100 60 0.1\"></Box></Shape></Transform>\n",
                 lx + 50, legY + 30, dimZ, leg[i].r/255.0, leg[i].g/255.0, leg[i].b/255.0);
         emitLabel(lx + 150, legY + 30, dimZ, leg[i].name, 60);
         legY += 100.0;
