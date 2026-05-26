@@ -1,0 +1,2142 @@
+{
+  "BCPitchCount": 3,
+  "BearingPadNotes": "",
+  "Bearings": [
+    {
+      "EndX": 3.5,
+      "EndY": 0.0,
+      "Material": "",
+      "ReactionData": [],
+      "StartX": 0.0,
+      "StartY": 0.0,
+      "Status": "Unknown",
+      "Type": "Wall"
+    },
+    {
+      "EndX": 432.0,
+      "EndY": 0.0,
+      "Material": "",
+      "ReactionData": [],
+      "StartX": 428.5,
+      "StartY": 0.0,
+      "Status": "Unknown",
+      "Type": "Wall"
+    }
+  ],
+  "Braces": [],
+  "Camber": 0.0,
+  "CamberDistance": 0.0,
+  "CamberNote": "",
+  "CarriedTrusses": "",
+  "CompatibilityVersion": "2026.3.0.66",
+  "ComponentStatus": "Not Analyzed",
+  "ComponentType": "Truss",
+  "EngineeringPresets": {
+    "BCDeadLoad": 10.0,
+    "BCLiveLoad": 0.0,
+    "GroundSnowLoad": 0.0,
+    "TCDeadLoad": 7.0,
+    "TCLiveLoad": 20.0,
+    "WindSpeed": 115.0
+  },
+  "FillPly": 1,
+  "HeelType": "Standard",
+  "Height": 94.06250000000001,
+  "HybridPlate": "AS",
+  "IsAttic": false,
+  "IsFlipped": false,
+  "IsGable": false,
+  "IsGirder": false,
+  "IsOrientedFlat": false,
+  "IsStructural": false,
+  "IsSymmetric": false,
+  "JigData": [
+    {
+      "Location": {
+        "x": 0.0,
+        "y": 4.0625,
+        "z": 0.0
+      },
+      "Type": "TopHeel"
+    },
+    {
+      "Location": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Type": "BottomHeel"
+    },
+    {
+      "Location": {
+        "x": -24.0,
+        "y": -5.9375,
+        "z": 0.0
+      },
+      "Type": "Overhang"
+    },
+    {
+      "Location": {
+        "x": 216.0,
+        "y": 94.0625,
+        "z": 0.0
+      },
+      "Type": "TopChord"
+    },
+    {
+      "Location": {
+        "x": 432.0,
+        "y": 4.0625,
+        "z": 0.0
+      },
+      "Type": "TopHeel"
+    },
+    {
+      "Location": {
+        "x": 432.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Type": "BottomHeel"
+    },
+    {
+      "Location": {
+        "x": 456.0,
+        "y": -5.9375,
+        "z": 0.0
+      },
+      "Type": "Overhang"
+    },
+    {
+      "Location": {
+        "x": 75.819846,
+        "y": 35.654103,
+        "z": 0.0
+      },
+      "Type": "TopChord"
+    },
+    {
+      "Location": {
+        "x": 145.236846,
+        "y": 64.577853,
+        "z": 0.0
+      },
+      "Type": "TopChord"
+    },
+    {
+      "Location": {
+        "x": 286.762154,
+        "y": 64.578269,
+        "z": 0.0
+      },
+      "Type": "TopChord"
+    },
+    {
+      "Location": {
+        "x": 356.179154,
+        "y": 35.654519,
+        "z": 0.0
+      },
+      "Type": "TopChord"
+    },
+    {
+      "Location": {
+        "x": 111.874,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Type": "BottomChord"
+    },
+    {
+      "Location": {
+        "x": 216.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Type": "BottomChord"
+    },
+    {
+      "Location": {
+        "x": 320.124,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Type": "BottomChord"
+    },
+    {
+      "Location": {
+        "x": 121.653846,
+        "y": 54.751603,
+        "z": 0.0
+      },
+      "Type": "TopChord"
+    },
+    {
+      "Location": {
+        "x": 123.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Type": "BottomChord"
+    },
+    {
+      "Location": {
+        "x": 125.153846,
+        "y": 56.209936,
+        "z": 0.0
+      },
+      "Type": "TopChord"
+    },
+    {
+      "Location": {
+        "x": 126.5,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Type": "BottomChord"
+    },
+    {
+      "Location": {
+        "x": 239.221154,
+        "y": 84.387019,
+        "z": 0.0
+      },
+      "Type": "TopChord"
+    },
+    {
+      "Location": {
+        "x": 237.875,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Type": "BottomChord"
+    },
+    {
+      "Location": {
+        "x": 244.721154,
+        "y": 82.095353,
+        "z": 0.0
+      },
+      "Type": "TopChord"
+    },
+    {
+      "Location": {
+        "x": 243.375,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Type": "BottomChord"
+    }
+  ],
+  "Joints": [
+    {
+      "Label": " 1",
+      "Location": {
+        "x": 3.875,
+        "y": 1.885417,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": " 6",
+      "Location": {
+        "x": 216.0,
+        "y": 90.270833,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "11",
+      "Location": {
+        "x": 428.125,
+        "y": 1.885417,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": " 2",
+      "Location": {
+        "x": 77.166,
+        "y": 32.423333,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": " 5",
+      "Location": {
+        "x": 146.583,
+        "y": 61.347083,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": " 9",
+      "Location": {
+        "x": 285.416,
+        "y": 61.3475,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "10",
+      "Location": {
+        "x": 354.833,
+        "y": 32.42375,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "12",
+      "Location": {
+        "x": 111.869186,
+        "y": 3.5,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "15",
+      "Location": {
+        "x": 216.0,
+        "y": 3.5,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "18",
+      "Location": {
+        "x": 320.124,
+        "y": 3.5,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": " 3",
+      "Location": {
+        "x": 119.5,
+        "y": 50.0625,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "13",
+      "Location": {
+        "x": 121.25,
+        "y": 3.5,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": " 4",
+      "Location": {
+        "x": 126.5,
+        "y": 52.979167,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "14",
+      "Location": {
+        "x": 130.0,
+        "y": 3.5,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "19",
+      "Location": {
+        "x": 124.75,
+        "y": 29.75,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "20",
+      "Location": {
+        "x": 124.75,
+        "y": 8.75,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": " 7",
+      "Location": {
+        "x": 234.375,
+        "y": 82.614583,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "16",
+      "Location": {
+        "x": 236.125,
+        "y": 3.5,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": " 8",
+      "Location": {
+        "x": 243.375,
+        "y": 78.864583,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "17",
+      "Location": {
+        "x": 246.875,
+        "y": 3.5,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "22",
+      "Location": {
+        "x": 240.625,
+        "y": 43.630208,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    },
+    {
+      "Label": "23",
+      "Location": {
+        "x": 240.625,
+        "y": 8.75,
+        "z": 0.0
+      },
+      "Plates": [],
+      "PlyCount": 1,
+      "StartPly": 1
+    }
+  ],
+  "LeftCantilever": 0.0,
+  "LeftHeelHeight": 4.062499999999999,
+  "LeftHeelToPeak": 235.59234687538134,
+  "LeftOverhang": 24.0,
+  "LeftOverhangRake": 26.000000000000004,
+  "LeftStub": 0.0,
+  "LeftTopChordHeelToPeak": 235.484344991575,
+  "NumPlies": 1,
+  "OCSpacing": 24.0,
+  "OverallTrussHeight": 103.79166666666677,
+  "OverhangPly": 1,
+  "PieceData": [
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "TopChord",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": -24.0,
+            "y": -9.729167,
+            "z": 0.0
+          },
+          {
+            "x": -24.0,
+            "y": -5.9375,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 145.236846,
+            "y": 64.577853,
+            "z": 0.0
+          },
+          {
+            "x": 146.583,
+            "y": 61.347083,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "TC1;TC1",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 184.06908333333334,
+        "CornerToCorner": 184.83139128152044,
+        "LongSide": 184.79825000000008,
+        "Overall": 184.7982500000001,
+        "PickLength": 192.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 183.33991666666668
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Left",
+      "StartPly": 1,
+      "SubType": "Lower",
+      "TopRip": 0.0,
+      "Type": "TopChord",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "TopChord",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 216.0,
+            "y": 90.270833,
+            "z": 0.0
+          },
+          {
+            "x": 216.0,
+            "y": 94.0625,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 286.762154,
+            "y": 64.578269,
+            "z": 0.0
+          },
+          {
+            "x": 285.416,
+            "y": 61.3475,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "TC3;TC2",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 75.92983333333335,
+        "CornerToCorner": 76.73885769934294,
+        "LongSide": 76.65900000000006,
+        "Overall": 76.65900000000006,
+        "PickLength": 84.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 75.20066666666672
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "TopChord",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "BottomChord",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 123.0,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 123.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          {
+            "x": 0.0,
+            "y": 0.270833,
+            "z": 0.0
+          },
+          {
+            "x": 7.75,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "BC1;BC1",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 119.45,
+        "CornerToCorner": 123.0497866718996,
+        "LongSide": 123.0,
+        "Overall": 123.0,
+        "PickLength": 144.0,
+        "PlumbCutLength": 123.0,
+        "ShortSide": 115.25
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Left",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "BottomChord",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "TopChord",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 146.583,
+            "y": 61.347083,
+            "z": 0.0
+          },
+          {
+            "x": 145.236846,
+            "y": 64.577853,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 216.0,
+            "y": 94.0625,
+            "z": 0.0
+          },
+          {
+            "x": 216.0,
+            "y": 90.270833,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "TC2;TC2",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 75.93091666666665,
+        "CornerToCorner": 76.73993990532962,
+        "LongSide": 76.66008333333333,
+        "Overall": 76.6600833333333,
+        "PickLength": 84.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 75.20174999999992
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "TopChord",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "TopChord",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 285.416,
+            "y": 61.3475,
+            "z": 0.0
+          },
+          {
+            "x": 286.762154,
+            "y": 64.578269,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 456.0,
+            "y": -5.9375,
+            "z": 0.0
+          },
+          {
+            "x": 456.0,
+            "y": -9.729167,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "TC4;TC1",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 184.07016666666664,
+        "CornerToCorner": 184.8324744206073,
+        "LongSide": 184.79933333333335,
+        "Overall": 184.7993333333333,
+        "PickLength": 192.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 183.34099999999998
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Right",
+      "StartPly": 1,
+      "SubType": "Lower",
+      "TopRip": 0.0,
+      "Type": "TopChord",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "BottomChord",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 237.875,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 237.875,
+            "y": 0.0,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 126.5,
+            "y": 0.0,
+            "z": 0.0
+          },
+          {
+            "x": 126.5,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "BC2;BC2",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 111.375,
+        "CornerToCorner": 111.42998081755196,
+        "LongSide": 111.375,
+        "Overall": 111.375,
+        "PickLength": 120.0,
+        "PlumbCutLength": 111.375,
+        "ShortSide": 111.375
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "BottomChord",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "BottomChord",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 424.25,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 432.0,
+            "y": 0.270833,
+            "z": 0.0
+          },
+          {
+            "x": 432.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 243.375,
+            "y": 0.0,
+            "z": 0.0
+          },
+          {
+            "x": 243.375,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "BC3;BC3",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 185.07499999999987,
+        "CornerToCorner": 188.65746904111694,
+        "LongSide": 188.625,
+        "Overall": 188.625,
+        "PickLength": 192.0,
+        "PlumbCutLength": 188.62499999999994,
+        "ShortSide": 180.8749999999999
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Right",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "BottomChord",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 75.343673,
+            "y": 31.664031,
+            "z": 0.0
+          },
+          {
+            "x": 78.988327,
+            "y": 33.182636,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 112.056999,
+            "y": 5.621586,
+            "z": 0.0
+          },
+          {
+            "x": 111.869186,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 109.135823,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB1;WB1",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 45.17599304398421,
+        "CornerToCorner": 46.12294127691288,
+        "LongSide": 43.99002126054712,
+        "Overall": 46.0897300060822,
+        "PickLength": 48.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 43.04821234286775
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 146.583,
+            "y": 59.044774,
+            "z": 0.0
+          },
+          {
+            "x": 146.583,
+            "y": 61.347083,
+            "z": 0.0
+          },
+          {
+            "x": 148.393639,
+            "y": 62.101516,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 214.25,
+            "y": 5.80231,
+            "z": 0.0
+          },
+          {
+            "x": 214.25,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 211.556858,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB6;WB6",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 89.02307531855774,
+        "CornerToCorner": 89.02307531855773,
+        "LongSide": 86.64098898325415,
+        "Overall": 89.02307531855773,
+        "PickLength": 96.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 85.47996360707567
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 217.75,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 214.25,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 214.25,
+            "y": 89.541667,
+            "z": 0.0
+          },
+          {
+            "x": 216.0,
+            "y": 90.270833,
+            "z": 0.0
+          },
+          {
+            "x": 217.75,
+            "y": 89.541667,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB7;WB7",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 86.77083333333336,
+        "CornerToCorner": 86.78847859803233,
+        "LongSide": 86.04166666666669,
+        "Overall": 86.77083333333336,
+        "PickLength": 96.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 86.04166666666669
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 285.416,
+            "y": 57.946075,
+            "z": 0.0
+          },
+          {
+            "x": 285.416,
+            "y": 61.3475,
+            "z": 0.0
+          },
+          {
+            "x": 288.137087,
+            "y": 60.213714,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 320.124,
+            "y": 6.901425,
+            "z": 0.0
+          },
+          {
+            "x": 320.124,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 318.083175,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB12;WB12",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 67.46094070089742,
+        "CornerToCorner": 67.46094070089741,
+        "LongSide": 63.49424714299838,
+        "Overall": 67.46094070089741,
+        "PickLength": 72.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 62.17204135378551
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 322.857611,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 320.124,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 320.124,
+            "y": 5.777976,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 353.010602,
+            "y": 33.183083,
+            "z": 0.0
+          },
+          {
+            "x": 356.655398,
+            "y": 31.664417,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB13;WB13",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 45.180725924474636,
+        "CornerToCorner": 46.12783833534765,
+        "LongSide": 43.99460034090161,
+        "Overall": 46.094630592857264,
+        "PickLength": 48.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 42.8085089307587
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 123.0,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 119.5,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 119.5,
+            "y": 50.0625,
+            "z": 0.0
+          },
+          {
+            "x": 123.0,
+            "y": 51.520833,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB3;WB3",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 47.2916666666667,
+        "CornerToCorner": 48.148213196626315,
+        "LongSide": 48.020833333333364,
+        "Overall": 48.020833333333364,
+        "PickLength": 48.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 46.56250000000003
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 130.0,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 126.5,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 126.5,
+            "y": 52.979167,
+            "z": 0.0
+          },
+          {
+            "x": 130.0,
+            "y": 54.4375,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB4;WB4",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 50.208333333333364,
+        "CornerToCorner": 51.05760380442862,
+        "LongSide": 50.937500000000036,
+        "Overall": 50.937500000000036,
+        "PickLength": 60.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 49.4791666666667
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 115.382874,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 111.869186,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 115.856743,
+            "y": 48.544476,
+            "z": 0.0
+          },
+          {
+            "x": 119.504998,
+            "y": 50.064583,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB2;WB2",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 45.98365641073593,
+        "CornerToCorner": 47.186501986872074,
+        "LongSide": 46.746681778639825,
+        "Overall": 47.056518886941504,
+        "PickLength": 48.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 45.22063104283208
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 131.820487,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 130.0,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 130.0,
+            "y": 9.850473,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 144.515567,
+            "y": 60.485653,
+            "z": 0.0
+          },
+          {
+            "x": 146.583,
+            "y": 61.347083,
+            "z": 0.0
+          },
+          {
+            "x": 146.583,
+            "y": 54.996611,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB5;WB5",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 60.17707984917197,
+        "CornerToCorner": 60.17707984917195,
+        "LongSide": 53.57081927073837,
+        "Overall": 60.17707984917195,
+        "PickLength": 72.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 52.674691506548854
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 126.5,
+            "y": 7.25,
+            "z": 0.0
+          },
+          {
+            "x": 123.0,
+            "y": 7.25,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 123.0,
+            "y": 51.520833,
+            "z": 0.0
+          },
+          {
+            "x": 126.5,
+            "y": 52.979167,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "OB1;OB1",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 45.000000000000036,
+        "CornerToCorner": 45.862911857270696,
+        "LongSide": 45.7291666666667,
+        "Overall": 45.7291666666667,
+        "PickLength": 48.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 44.270833333333364
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "NonStructural",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 237.875,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 234.375,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 234.375,
+            "y": 82.614583,
+            "z": 0.0
+          },
+          {
+            "x": 237.875,
+            "y": 81.15625,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB9;WB9",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 78.38541666666666,
+        "CornerToCorner": 79.19196484496986,
+        "LongSide": 79.11458333333331,
+        "Overall": 79.11458333333331,
+        "PickLength": 84.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 77.65624999999999
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 246.875,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 243.375,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 243.375,
+            "y": 78.864583,
+            "z": 0.0
+          },
+          {
+            "x": 246.875,
+            "y": 77.40625,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB10;WB10",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 74.63541666666661,
+        "CornerToCorner": 75.44581115613337,
+        "LongSide": 75.3645833333333,
+        "Overall": 75.3645833333333,
+        "PickLength": 84.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 73.90624999999996
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 221.295858,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 217.74834,
+            "y": 3.5,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 231.057678,
+            "y": 83.996801,
+            "z": 0.0
+          },
+          {
+            "x": 234.376553,
+            "y": 82.613936,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB8;WB8",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 80.88884540231514,
+        "CornerToCorner": 81.58966490646698,
+        "LongSide": 81.58966490646698,
+        "Overall": 81.58966490646698,
+        "PickLength": 84.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 80.18802589816325
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1275.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 248.977836,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 246.875,
+            "y": 3.5,
+            "z": 0.0
+          },
+          {
+            "x": 246.875,
+            "y": 6.656218,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 283.77008,
+            "y": 62.0333,
+            "z": 0.0
+          },
+          {
+            "x": 285.416,
+            "y": 61.3475,
+            "z": 0.0
+          },
+          {
+            "x": 285.416,
+            "y": 58.191282,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "WB11;WB11",
+      "GoldenGuid": "45D0A2C9-89AD-4ABA-9087-293ACF831CF9",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 69.51073253282544,
+        "CornerToCorner": 69.51073253282543,
+        "LongSide": 66.54222856534744,
+        "Overall": 69.51073253282547,
+        "PickLength": 72.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 65.71815729022325
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "Web",
+      "UserThickness": 1.5,
+      "UserWidth": 3.5
+    },
+    {
+      "BeamStress": 1105.0,
+      "Bevels": {
+        "Bottom": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Left": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Right": {
+          "Angle": 0.0,
+          "Type": "None"
+        },
+        "Top": {
+          "Angle": 0.0,
+          "Type": "None"
+        }
+      },
+      "BottomRip": 0.0,
+      "CustomSizeCategory": "Web",
+      "EndCap": {
+        "Negative": [
+          {
+            "x": 243.375,
+            "y": 7.25,
+            "z": 0.0
+          },
+          {
+            "x": 237.875,
+            "y": 7.25,
+            "z": 0.0
+          }
+        ],
+        "Positive": [
+          {
+            "x": 237.875,
+            "y": 81.15625,
+            "z": 0.0
+          },
+          {
+            "x": 243.375,
+            "y": 78.864583,
+            "z": 0.0
+          }
+        ]
+      },
+      "EngineeringLabel": "OB2;OB2",
+      "GoldenGuid": "0FF8CDBC-28C0-482F-B3E7-AEDC6A75B3FE",
+      "IsFill": false,
+      "IsOverhang": false,
+      "IsOverhangAlternate": false,
+      "Lengths": {
+        "Centerline": 72.76041666666664,
+        "CornerToCorner": 74.11061859856858,
+        "LongSide": 73.90624999999999,
+        "Overall": 73.90624999999999,
+        "PickLength": 84.0,
+        "PlumbCutLength": 0.0,
+        "ShortSide": 71.6145833333333
+      },
+      "PlyCount": 1,
+      "PositionOnTruss": "Interior",
+      "StartPly": 1,
+      "SubType": "None",
+      "TopRip": 0.0,
+      "Type": "NonStructural",
+      "UserThickness": 1.5,
+      "UserWidth": 5.5
+    }
+  ],
+  "PitchLeftBottomOver12": 0.0,
+  "PitchLeftTopOver12": 5.000000000000001,
+  "PitchRightTopOver12": 4.999999999999999,
+  "PlyToPlyNote": "",
+  "ProdSpan": 432.0,
+  "Quantity": 3,
+  "RightCantilever": 0.0,
+  "RightHeelHeight": 4.062499999999958,
+  "RightHeelToPeak": 235.59234687538134,
+  "RightOverhang": 24.0,
+  "RightOverhangRake": 26.000000000000004,
+  "RightStub": 0.0,
+  "RightTopChordHeelToPeak": 235.48434499157497,
+  "SinglePlyFill": false,
+  "SinglePlyOverhang": false,
+  "Span": 432.0,
+  "Splices": [],
+  "Svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 531.882 202.817\" >\n<g visibility=\"inherit\" id=\"Boards\">\n<title>Boards</title>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>TC1;TC1</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"26.7671,157.673 26.7671,153.881 196.004,83.3658 197.35,86.5966 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>TC2;TC2</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"197.35,86.5966 196.004,83.3658 266.767,53.8812 266.767,57.6728 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>TC3;TC2</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"266.767,57.6728 266.767,53.8812 337.529,83.3654 336.183,86.5962 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>TC4;TC1</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"336.183,86.5962 337.529,83.3654 506.767,153.881 506.767,157.673 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>BC1;BC1</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"50.7671,147.944 50.7671,147.673 58.5171,144.444 173.767,144.444 173.767,147.944 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>BC2;BC2</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"177.267,147.944 177.267,144.444 288.642,144.444 288.642,147.944 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>BC3;BC3</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"294.142,147.944 294.142,144.444 475.017,144.444 482.767,147.673 482.767,147.944 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB1;WB1</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"126.111,116.28 129.755,114.761 162.824,142.322 162.636,144.444 159.903,144.444 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB2;WB2</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"166.15,144.444 162.636,144.444 166.624,99.3992 170.272,97.8791 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB3;WB3</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"173.767,144.444 170.267,144.444 170.267,97.8812 173.767,96.4228 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB4;WB4</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"180.767,144.444 177.267,144.444 177.267,94.9645 180.767,93.5062 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB5;WB5</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"182.588,144.444 180.767,144.444 180.767,138.093 195.283,87.458 197.35,86.5966 197.35,92.947 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB6;WB6</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"197.35,88.8989 197.35,86.5966 199.161,85.8421 265.017,142.141 265.017,144.444 262.324,144.444 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB7;WB7</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"268.517,144.444 265.017,144.444 265.017,58.402 266.767,57.6728 268.517,58.402 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB8;WB8</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"272.063,144.444 268.515,144.444 281.825,63.9469 285.144,65.3297 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB9;WB9</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"288.642,144.444 285.142,144.444 285.142,65.3291 288.642,66.7874 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB10;WB10</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"297.642,144.444 294.142,144.444 294.142,69.0791 297.642,70.5374 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB11;WB11</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"299.745,144.444 297.642,144.444 297.642,141.287 334.537,85.9104 336.183,86.5962 336.183,89.7524 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB12;WB12</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"336.183,89.9976 336.183,86.5962 338.904,87.7299 370.891,141.042 370.891,144.444 368.85,144.444 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>WB13;WB13</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"373.625,144.444 370.891,144.444 370.891,142.166 403.778,114.761 407.422,116.279 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>OB1;OB1</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"177.267,140.694 173.767,140.694 173.767,96.4228 177.267,94.9645 \" />\n</g>\n<g visibility=\"inherit\" class=\"Board\">\n<desc>OB2;OB2</desc>\n<polygon fill = \"#bf9259\" fill-opacity = \"0.784314\" stroke = \"#000000\" stroke-width = \"0.25\" points =\"294.142,140.694 288.642,140.694 288.642,66.7874 294.142,69.0791 \" />\n</g>\n</g>\n<g visibility=\"inherit\" id=\"BoardLabels\">\n<title>BoardLabels</title>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>TC1;TC1</desc>\n<text font-family=\"Lucida Console\" x=\"112.059\" y=\"122.135\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-22.6199 112.059 122.135 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>TC2;TC2</desc>\n<text font-family=\"Lucida Console\" x=\"232.059\" y=\"72.1347\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-22.6199 232.059 72.1347 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>TC3;TC2</desc>\n<text font-family=\"Lucida Console\" x=\"301.475\" y=\"72.1345\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-337.38 301.475 72.1345 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>TC4;TC1</desc>\n<text font-family=\"Lucida Console\" x=\"421.475\" y=\"122.134\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-337.38 421.475 122.134 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>BC1;BC1</desc>\n<text font-family=\"Lucida Console\" x=\"112.267\" y=\"147.944\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 112.267 147.944 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>BC2;BC2</desc>\n<text font-family=\"Lucida Console\" x=\"232.955\" y=\"147.944\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 232.955 147.944 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>BC3;BC3</desc>\n<text font-family=\"Lucida Console\" x=\"388.455\" y=\"147.944\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 388.455 147.944 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB1;WB1</desc>\n<text font-family=\"Lucida Console\" x=\"143.007\" y=\"130.362\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-320.191 143.007 130.362 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB2;WB2</desc>\n<text font-family=\"Lucida Console\" x=\"167.329\" y=\"131.122\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-84.9411 167.329 131.122 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB3;WB3</desc>\n<text font-family=\"Lucida Console\" x=\"173.767\" y=\"123.433\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-90 173.767 123.433 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB4;WB4</desc>\n<text font-family=\"Lucida Console\" x=\"180.767\" y=\"115.975\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-90 180.767 115.975 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB5;WB5</desc>\n<text font-family=\"Lucida Console\" x=\"193.551\" y=\"106.199\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-74.004 193.551 106.199 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB6;WB6</desc>\n<text font-family=\"Lucida Console\" x=\"229.837\" y=\"116.671\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-319.474 229.837 116.671 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB7;WB7</desc>\n<text font-family=\"Lucida Console\" x=\"268.517\" y=\"99.4228\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-90 268.517 99.4228 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB8;WB8</desc>\n<text font-family=\"Lucida Console\" x=\"277.461\" y=\"111.793\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-80.6117 277.461 111.793 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB9;WB9</desc>\n<text font-family=\"Lucida Console\" x=\"288.642\" y=\"99.6155\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-90 288.642 99.6155 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB10;WB10</desc>\n<text font-family=\"Lucida Console\" x=\"297.642\" y=\"114.491\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-90 297.642 114.491 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB11;WB11</desc>\n<text font-family=\"Lucida Console\" x=\"317.964\" y=\"117.098\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-56.3264 317.964 117.098 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB12;WB12</desc>\n<text font-family=\"Lucida Console\" x=\"352.517\" y=\"117.221\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-300.963 352.517 117.221 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>WB13;WB13</desc>\n<text font-family=\"Lucida Console\" x=\"390.524\" y=\"130.361\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-39.8052 390.524 130.361 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>OB1;OB1</desc>\n<text font-family=\"Lucida Console\" x=\"177.267\" y=\"104.829\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-90 177.267 104.829 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n<g visibility=\"inherit\" class=\"BoardLabel\">\n<desc>OB2;OB2</desc>\n<text font-family=\"Lucida Console\" x=\"294.142\" y=\"106.886\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-90 294.142 106.886 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[    ]]></text>\n</g>\n</g>\n<g visibility=\"inherit\" id=\"Plates\">\n<title>Plates</title>\n</g>\n<g visibility=\"inherit\" id=\"PlateNames\">\n<title>PlateNames</title>\n</g>\n<g visibility=\"inherit\" id=\"PointLoads\">\n<title>PointLoads</title>\n</g>\n<g visibility=\"inherit\" id=\"Bearings\">\n<title>Bearings</title>\n<g visibility=\"inherit\" class=\"Bearing\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"153.944\" x2 =\"50.7671\" y2 =\"147.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"147.944\" x2 =\"54.2671\" y2 =\"147.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"54.2671\" y1 =\"147.944\" x2 =\"54.2671\" y2 =\"153.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"149.444\" x2 =\"54.2671\" y2 =\"149.444\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"150.944\" x2 =\"54.2671\" y2 =\"150.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"149.444\" x2 =\"54.2671\" y2 =\"147.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"147.944\" x2 =\"54.2671\" y2 =\"149.444\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"150.944\" x2 =\"54.2671\" y2 =\"149.444\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"149.444\" x2 =\"54.2671\" y2 =\"150.944\" />\n</g>\n<g visibility=\"inherit\" class=\"Bearing\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"479.267\" y1 =\"153.944\" x2 =\"479.267\" y2 =\"147.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"479.267\" y1 =\"147.944\" x2 =\"482.767\" y2 =\"147.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"482.767\" y1 =\"147.944\" x2 =\"482.767\" y2 =\"153.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"479.267\" y1 =\"149.444\" x2 =\"482.767\" y2 =\"149.444\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"479.267\" y1 =\"150.944\" x2 =\"482.767\" y2 =\"150.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"479.267\" y1 =\"149.444\" x2 =\"482.767\" y2 =\"147.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"479.267\" y1 =\"147.944\" x2 =\"482.767\" y2 =\"149.444\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"479.267\" y1 =\"150.944\" x2 =\"482.767\" y2 =\"149.444\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"479.267\" y1 =\"149.444\" x2 =\"482.767\" y2 =\"150.944\" />\n</g>\n</g>\n<g visibility=\"inherit\" id=\"Ribbons\">\n<title>Ribbons</title>\n</g>\n<g visibility=\"inherit\" id=\"Braces\">\n<title>Braces</title>\n</g>\n<g visibility=\"inherit\" id=\"BracingCircles\">\n<title>BracingCircles</title>\n</g>\n<g visibility=\"inherit\" id=\"Purlins\">\n<title>Purlins</title>\n</g>\n<g visibility=\"inherit\" id=\"StiffBacks\">\n<title>StiffBacks</title>\n</g>\n<g visibility=\"inherit\" id=\"Dimensions\">\n<title>Dimensions</title>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"26.7671\" y1 =\"14.2262\" x2 =\"50.7671\" y2 =\"14.2262\" />\n<text font-family=\"Lucida Console\" x=\"38.7671\" y=\"12.5739\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 38.7671 12.5739 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[2-0-0]]></text>\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"26.7671\" y1 =\"11.5825\" x2 =\"26.7671\" y2 =\"16.8699\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"25.4453\" y1 =\"12.9044\" x2 =\"28.0889\" y2 =\"15.548\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"11.5825\" x2 =\"50.7671\" y2 =\"16.8699\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"49.4453\" y1 =\"12.9044\" x2 =\"52.0889\" y2 =\"15.548\" />\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"482.767\" y1 =\"14.2262\" x2 =\"506.767\" y2 =\"14.2262\" />\n<text font-family=\"Lucida Console\" x=\"494.767\" y=\"12.5739\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 494.767 12.5739 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[2-0-0]]></text>\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"482.767\" y1 =\"11.5825\" x2 =\"482.767\" y2 =\"16.8699\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"481.445\" y1 =\"12.9044\" x2 =\"484.089\" y2 =\"15.548\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"506.767\" y1 =\"11.5825\" x2 =\"506.767\" y2 =\"16.8699\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"505.445\" y1 =\"12.9044\" x2 =\"508.089\" y2 =\"15.548\" />\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"171.267\" y1 =\"147.944\" x2 =\"171.267\" y2 =\"140.694\" />\n<text font-family=\"Lucida Console\" x=\"164.658\" y=\"144.319\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-90 164.658 144.319 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[7-4]]></text>\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"169.945\" y1 =\"147.944\" x2 =\"172.589\" y2 =\"147.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"170.606\" y1 =\"147.283\" x2 =\"171.928\" y2 =\"148.605\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"169.945\" y1 =\"140.694\" x2 =\"172.589\" y2 =\"140.694\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"170.606\" y1 =\"140.033\" x2 =\"171.928\" y2 =\"141.355\" />\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"296.642\" y1 =\"147.944\" x2 =\"296.642\" y2 =\"140.694\" />\n<text font-family=\"Lucida Console\" x=\"303.251\" y=\"144.319\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-90 303.251 144.319 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[7-4]]></text>\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"295.32\" y1 =\"147.944\" x2 =\"297.964\" y2 =\"147.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"295.981\" y1 =\"147.283\" x2 =\"297.303\" y2 =\"148.605\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"295.32\" y1 =\"140.694\" x2 =\"297.964\" y2 =\"140.694\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"295.981\" y1 =\"140.033\" x2 =\"297.303\" y2 =\"141.355\" />\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"17.5143\" y1 =\"147.944\" x2 =\"17.5143\" y2 =\"143.881\" />\n<text font-family=\"Lucida Console\" x=\"17.5143\" y=\"138.594\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 17.5143 138.594 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[4-1]]></text>\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"14.8706\" y1 =\"147.944\" x2 =\"20.1579\" y2 =\"147.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"16.1924\" y1 =\"146.622\" x2 =\"18.8361\" y2 =\"149.265\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"14.8706\" y1 =\"143.881\" x2 =\"20.1579\" y2 =\"143.881\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"16.1924\" y1 =\"142.559\" x2 =\"18.8361\" y2 =\"145.203\" />\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"516.02\" y1 =\"147.944\" x2 =\"516.02\" y2 =\"143.881\" />\n<text font-family=\"Lucida Console\" x=\"516.02\" y=\"138.594\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 516.02 138.594 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[4-1]]></text>\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"513.376\" y1 =\"147.944\" x2 =\"518.664\" y2 =\"147.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"514.698\" y1 =\"146.622\" x2 =\"517.342\" y2 =\"149.265\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"513.376\" y1 =\"143.881\" x2 =\"518.664\" y2 =\"143.881\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"514.698\" y1 =\"142.559\" x2 =\"517.342\" y2 =\"145.203\" />\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"8.26145\" y1 =\"147.944\" x2 =\"8.26145\" y2 =\"53.8812\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"5.61778\" y1 =\"147.944\" x2 =\"10.9051\" y2 =\"147.944\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"6.93962\" y1 =\"146.622\" x2 =\"9.58328\" y2 =\"149.265\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"5.61778\" y1 =\"53.8812\" x2 =\"10.9051\" y2 =\"53.8812\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"6.93962\" y1 =\"52.5593\" x2 =\"9.58328\" y2 =\"55.203\" />\n<text font-family=\"Lucida Console\" x=\"6.60916\" y=\"100.912\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-90 6.60916 100.912 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[7-10-1]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"525.273\" y1 =\"157.673\" x2 =\"525.273\" y2 =\"53.8812\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"522.629\" y1 =\"157.673\" x2 =\"527.916\" y2 =\"157.673\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"523.951\" y1 =\"156.351\" x2 =\"526.595\" y2 =\"158.995\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"522.629\" y1 =\"53.8812\" x2 =\"527.916\" y2 =\"53.8812\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"523.951\" y1 =\"52.5593\" x2 =\"526.595\" y2 =\"55.203\" />\n<text font-family=\"Lucida Console\" x=\"531.882\" y=\"105.777\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-90 531.882 105.777 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[8-7-13]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"50.7671\" y=\"26.4532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 50.7671 26.4532 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[1]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"14.2262\" x2 =\"127.933\" y2 =\"14.2262\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"12.64\" x2 =\"50.7671\" y2 =\"15.8124\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"127.933\" y1 =\"12.64\" x2 =\"127.933\" y2 =\"15.8124\" />\n<text font-family=\"Lucida Console\" x=\"89.3501\" y=\"12.5739\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 89.3501 12.5739 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[6-5-3]]></text>\n<text font-family=\"Lucida Console\" x=\"89.3501\" y=\"20.8354\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 89.3501 20.8354 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[6-5-3]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"127.933\" y=\"26.4532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 127.933 26.4532 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[2]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"127.933\" y1 =\"14.2262\" x2 =\"173.767\" y2 =\"14.2262\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"127.933\" y1 =\"12.64\" x2 =\"127.933\" y2 =\"15.8124\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"173.767\" y1 =\"12.64\" x2 =\"173.767\" y2 =\"15.8124\" />\n<text font-family=\"Lucida Console\" x=\"150.85\" y=\"12.5739\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 150.85 12.5739 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[3-9-13]]></text>\n<text font-family=\"Lucida Console\" x=\"150.85\" y=\"20.8354\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 150.85 20.8354 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[10-3-0]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"171.632\" y=\"26.4532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 171.632 26.4532 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[3]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"173.767\" y1 =\"14.2262\" x2 =\"177.267\" y2 =\"14.2262\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"173.767\" y1 =\"12.64\" x2 =\"173.767\" y2 =\"15.8124\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"177.267\" y1 =\"12.64\" x2 =\"177.267\" y2 =\"15.8124\" />\n<text font-family=\"Lucida Console\" x=\"177.169\" y=\"12.987\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"4.95687\" font-weight=\"400\" transform=\"rotate(-90 177.169 12.987 )\" text-anchor=\"start\" fill=\"#000000\"><![CDATA[3-8]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"179.402\" y=\"26.4532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 179.402 26.4532 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[4]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"177.267\" y1 =\"14.2262\" x2 =\"197.35\" y2 =\"14.2262\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"177.267\" y1 =\"12.64\" x2 =\"177.267\" y2 =\"15.8124\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"197.35\" y1 =\"12.64\" x2 =\"197.35\" y2 =\"15.8124\" />\n<text font-family=\"Lucida Console\" x=\"187.309\" y=\"10.9216\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"4.95687\" font-weight=\"400\" transform=\"rotate(-0 187.309 10.9216 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[1-8-1]]></text>\n<text font-family=\"Lucida Console\" x=\"187.309\" y=\"20.8354\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"4.95687\" font-weight=\"400\" transform=\"rotate(-0 187.309 20.8354 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[12-2-9]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"197.35\" y=\"26.4532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 197.35 26.4532 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[5]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"197.35\" y1 =\"14.2262\" x2 =\"266.767\" y2 =\"14.2262\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"197.35\" y1 =\"12.64\" x2 =\"197.35\" y2 =\"15.8124\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"266.767\" y1 =\"12.64\" x2 =\"266.767\" y2 =\"15.8124\" />\n<text font-family=\"Lucida Console\" x=\"232.059\" y=\"12.5739\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 232.059 12.5739 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[5-9-7]]></text>\n<text font-family=\"Lucida Console\" x=\"232.059\" y=\"20.8354\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 232.059 20.8354 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[18-0-0]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"266.767\" y=\"26.4532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 266.767 26.4532 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[6]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"266.767\" y1 =\"14.2262\" x2 =\"288.642\" y2 =\"14.2262\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"266.767\" y1 =\"12.64\" x2 =\"266.767\" y2 =\"15.8124\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"288.642\" y1 =\"12.64\" x2 =\"288.642\" y2 =\"15.8124\" />\n<text font-family=\"Lucida Console\" x=\"277.705\" y=\"10.9216\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"4.95687\" font-weight=\"400\" transform=\"rotate(-0 277.705 10.9216 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[1-9-14]]></text>\n<text font-family=\"Lucida Console\" x=\"277.705\" y=\"20.8354\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"4.95687\" font-weight=\"400\" transform=\"rotate(-0 277.705 20.8354 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[19-9-14]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"288.642\" y=\"26.4532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 288.642 26.4532 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[7]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"288.642\" y1 =\"14.2262\" x2 =\"294.142\" y2 =\"14.2262\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"288.642\" y1 =\"12.64\" x2 =\"288.642\" y2 =\"15.8124\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"294.142\" y1 =\"12.64\" x2 =\"294.142\" y2 =\"15.8124\" />\n<text font-family=\"Lucida Console\" x=\"293.044\" y=\"12.987\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"4.95687\" font-weight=\"400\" transform=\"rotate(-90 293.044 12.987 )\" text-anchor=\"start\" fill=\"#000000\"><![CDATA[5-8]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"294.142\" y=\"26.4532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 294.142 26.4532 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[8]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"294.142\" y1 =\"14.2262\" x2 =\"336.183\" y2 =\"14.2262\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"294.142\" y1 =\"12.64\" x2 =\"294.142\" y2 =\"15.8124\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"336.183\" y1 =\"12.64\" x2 =\"336.183\" y2 =\"15.8124\" />\n<text font-family=\"Lucida Console\" x=\"315.163\" y=\"12.5739\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 315.163 12.5739 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[3-6-1]]></text>\n<text font-family=\"Lucida Console\" x=\"315.163\" y=\"20.8354\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 315.163 20.8354 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[23-9-7]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"336.183\" y=\"26.4532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 336.183 26.4532 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[9]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"336.183\" y1 =\"14.2262\" x2 =\"405.6\" y2 =\"14.2262\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"336.183\" y1 =\"12.64\" x2 =\"336.183\" y2 =\"15.8124\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"405.6\" y1 =\"12.64\" x2 =\"405.6\" y2 =\"15.8124\" />\n<text font-family=\"Lucida Console\" x=\"370.892\" y=\"12.5739\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 370.892 12.5739 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[5-9-7]]></text>\n<text font-family=\"Lucida Console\" x=\"370.892\" y=\"20.8354\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 370.892 20.8354 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[29-6-13]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"405.6\" y=\"26.4532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 405.6 26.4532 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[10]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"405.6\" y1 =\"14.2262\" x2 =\"482.767\" y2 =\"14.2262\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"405.6\" y1 =\"12.64\" x2 =\"405.6\" y2 =\"15.8124\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"482.767\" y1 =\"12.64\" x2 =\"482.767\" y2 =\"15.8124\" />\n<text font-family=\"Lucida Console\" x=\"444.184\" y=\"12.5739\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 444.184 12.5739 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[6-5-3]]></text>\n<text font-family=\"Lucida Console\" x=\"444.184\" y=\"20.8354\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 444.184 20.8354 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[36-0-0]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"482.767\" y=\"26.4532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 482.767 26.4532 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[11]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"50.7671\" y=\"181.998\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 50.7671 181.998 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[1]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"169.771\" x2 =\"162.641\" y2 =\"169.771\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"168.185\" x2 =\"50.7671\" y2 =\"171.357\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"162.641\" y1 =\"168.185\" x2 =\"162.641\" y2 =\"171.357\" />\n<text font-family=\"Lucida Console\" x=\"106.704\" y=\"168.119\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 106.704 168.119 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[9-3-14]]></text>\n<text font-family=\"Lucida Console\" x=\"106.704\" y=\"176.38\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 106.704 176.38 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[9-3-14]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"162.641\" y=\"181.998\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 162.641 181.998 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[12]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"162.641\" y1 =\"169.771\" x2 =\"173.767\" y2 =\"169.771\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"162.641\" y1 =\"168.185\" x2 =\"162.641\" y2 =\"171.357\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"173.767\" y1 =\"168.185\" x2 =\"173.767\" y2 =\"171.357\" />\n<text font-family=\"Lucida Console\" x=\"169.856\" y=\"168.532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"4.95687\" font-weight=\"400\" transform=\"rotate(-90 169.856 168.532 )\" text-anchor=\"start\" fill=\"#000000\"><![CDATA[11-2]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"169.649\" y=\"181.998\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 169.649 181.998 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[13]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"173.767\" y1 =\"169.771\" x2 =\"177.267\" y2 =\"169.771\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"173.767\" y1 =\"168.185\" x2 =\"173.767\" y2 =\"171.357\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"177.267\" y1 =\"168.185\" x2 =\"177.267\" y2 =\"171.357\" />\n<text font-family=\"Lucida Console\" x=\"177.169\" y=\"168.532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"4.95687\" font-weight=\"400\" transform=\"rotate(-90 177.169 168.532 )\" text-anchor=\"start\" fill=\"#000000\"><![CDATA[3-8]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"177.267\" y=\"187.616\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 177.267 187.616 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[14]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"177.267\" y1 =\"169.771\" x2 =\"266.767\" y2 =\"169.771\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"177.267\" y1 =\"168.185\" x2 =\"177.267\" y2 =\"171.357\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"266.767\" y1 =\"168.185\" x2 =\"266.767\" y2 =\"171.357\" />\n<text font-family=\"Lucida Console\" x=\"222.017\" y=\"168.119\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 222.017 168.119 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[7-5-8]]></text>\n<text font-family=\"Lucida Console\" x=\"222.017\" y=\"176.38\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 222.017 176.38 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[18-0-0]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"266.767\" y=\"181.998\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 266.767 181.998 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[15]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"266.767\" y1 =\"169.771\" x2 =\"288.642\" y2 =\"169.771\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"266.767\" y1 =\"168.185\" x2 =\"266.767\" y2 =\"171.357\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"288.642\" y1 =\"168.185\" x2 =\"288.642\" y2 =\"171.357\" />\n<text font-family=\"Lucida Console\" x=\"277.705\" y=\"166.467\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"4.95687\" font-weight=\"400\" transform=\"rotate(-0 277.705 166.467 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[1-9-14]]></text>\n<text font-family=\"Lucida Console\" x=\"277.705\" y=\"176.38\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"4.95687\" font-weight=\"400\" transform=\"rotate(-0 277.705 176.38 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[19-9-14]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"285.524\" y=\"181.998\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 285.524 181.998 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[16]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"288.642\" y1 =\"169.771\" x2 =\"294.142\" y2 =\"169.771\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"288.642\" y1 =\"168.185\" x2 =\"288.642\" y2 =\"171.357\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"294.142\" y1 =\"168.185\" x2 =\"294.142\" y2 =\"171.357\" />\n<text font-family=\"Lucida Console\" x=\"293.044\" y=\"168.532\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"4.95687\" font-weight=\"400\" transform=\"rotate(-90 293.044 168.532 )\" text-anchor=\"start\" fill=\"#000000\"><![CDATA[5-8]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"297.26\" y=\"181.998\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 297.26 181.998 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[17]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"294.142\" y1 =\"169.771\" x2 =\"370.891\" y2 =\"169.771\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"294.142\" y1 =\"168.185\" x2 =\"294.142\" y2 =\"171.357\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"370.891\" y1 =\"168.185\" x2 =\"370.891\" y2 =\"171.357\" />\n<text font-family=\"Lucida Console\" x=\"332.517\" y=\"168.119\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 332.517 168.119 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[6-4-12]]></text>\n<text font-family=\"Lucida Console\" x=\"332.517\" y=\"176.38\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 332.517 176.38 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[26-8-2]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"370.891\" y=\"181.998\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 370.891 181.998 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[18]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"370.891\" y1 =\"169.771\" x2 =\"482.767\" y2 =\"169.771\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"370.891\" y1 =\"168.185\" x2 =\"370.891\" y2 =\"171.357\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"482.767\" y1 =\"168.185\" x2 =\"482.767\" y2 =\"171.357\" />\n<text font-family=\"Lucida Console\" x=\"426.829\" y=\"168.119\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 426.829 168.119 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[9-3-14]]></text>\n<text font-family=\"Lucida Console\" x=\"426.829\" y=\"176.38\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 426.829 176.38 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[36-0-0]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<text font-family=\"Lucida Console\" x=\"482.767\" y=\"181.998\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 482.767 181.998 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[11]]></text>\n</g>\n<g visibility=\"inherit\" class=\"Dimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"186.294\" x2 =\"482.767\" y2 =\"186.294\" />\n<text font-family=\"Lucida Console\" x=\"266.767\" y=\"192.903\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 266.767 192.903 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[36-0-0]]></text>\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"50.7671\" y1 =\"183.65\" x2 =\"50.7671\" y2 =\"188.938\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"49.4453\" y1 =\"184.972\" x2 =\"52.0889\" y2 =\"187.616\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"482.767\" y1 =\"183.65\" x2 =\"482.767\" y2 =\"188.938\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"481.445\" y1 =\"184.972\" x2 =\"484.089\" y2 =\"187.616\" />\n</g>\n</g>\n<g visibility=\"inherit\" id=\"BearingDimensions\">\n<title>BearingDimensions</title>\n</g>\n<g visibility=\"inherit\" id=\"AlongChordOHDimensions\">\n<title>AlongChordOHDimensions</title>\n<g visibility=\"inherit\" class=\"AlongChordOHDimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"22.879\" y1 =\"148.341\" x2 =\"46.879\" y2 =\"138.341\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"21.8622\" y1 =\"145.901\" x2 =\"25.0363\" y2 =\"153.519\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"45.8622\" y1 =\"135.901\" x2 =\"49.0363\" y2 =\"143.519\" />\n<text font-family=\"Lucida Console\" x=\"34.2435\" y=\"141.816\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-22.6199 34.2435 141.816 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[2-2-0]]></text>\n</g>\n<g visibility=\"inherit\" class=\"AlongChordOHDimension\">\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"486.655\" y1 =\"138.341\" x2 =\"510.655\" y2 =\"148.341\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"487.672\" y1 =\"135.901\" x2 =\"484.498\" y2 =\"143.519\" />\n<line stroke = \"#000000\" stroke-width = \"0.25\" x1 =\"511.672\" y1 =\"145.901\" x2 =\"508.498\" y2 =\"153.519\" />\n<text font-family=\"Lucida Console\" x=\"499.291\" y=\"141.816\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(22.6199 499.291 141.816 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[2-2-0]]></text>\n</g>\n</g>\n<g visibility=\"inherit\" id=\"PitchMarks\">\n<title>PitchMarks</title>\n<g visibility=\"inherit\" class=\"PitchMark\">\n<text font-family=\"Lucida Console\" x=\"148.599\" y=\"74.4781\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 148.599 74.4781 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[ 5/12]]></text>\n</g>\n<g visibility=\"inherit\" class=\"PitchMark\">\n<text font-family=\"Lucida Console\" x=\"384.935\" y=\"74.4781\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"6.60916\" font-weight=\"400\" transform=\"rotate(-0 384.935 74.4781 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[-5/12]]></text>\n</g>\n</g>\n<g visibility=\"inherit\" id=\"CADMarkup\">\n<title>CADMarkup</title>\n</g>\n<g visibility=\"inherit\" id=\"FailedAnalysis\">\n<title>FailedAnalysis</title>\n</g>\n<g visibility=\"inherit\" id=\"PlateOffsets\">\n<title>PlateOffsets</title>\n<text font-family=\"Lucida Console\" x=\"265.941\" y=\"202.817\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"5.94824\" font-weight=\"400\" transform=\"rotate(-0 265.941 202.817 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[Plate Offset (X,Y): ]]></text>\n</g>\n<g visibility=\"inherit\" id=\"Reactions\">\n<title>Reactions</title>\n<text font-family=\"Lucida Console\" x=\"52.5171\" y=\"202.817\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"5.94824\" font-weight=\"400\" transform=\"rotate(-0 52.5171 202.817 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[J-P=0#]]></text>\n<text font-family=\"Lucida Console\" x=\"481.017\" y=\"202.817\" xml:space=\"preserve\" lengthAdjust=\"spacing\" font-size=\"5.94824\" font-weight=\"400\" transform=\"rotate(-0 481.017 202.817 )\" text-anchor=\"middle\" fill=\"#000000\"><![CDATA[J-P=0#]]></text>\n</g>\n</svg>",
+  "TCPitchCount": 2,
+  "TCRakeFirst": 260.0,
+  "TCRakeLast": 260.00000000000006,
+  "Thickness": 1.5,
+  "TrussMatchCode": "3b92279ff669258bf49a321e6cf80bcc",
+  "TrussType": "Common",
+  "Version": "2026.3.0.66",
+  "Weight": 0.0,
+  "WeightByPly": []
+}

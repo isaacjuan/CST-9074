@@ -173,7 +173,6 @@ static const char *parseNumber(const char *p, double &out) {
 
 static const char *parseValue(const char *p, TrussData &data, const std::string &contextKey);
 static const char *parseObject(const char *p, TrussData &data);
-static const char *parsePieceArray(const char *p, std::vector<TrussPiece> &pieces);
 static const char *parsePieceObject(const char *p, TrussPiece &piece);
 
 static const char *parseObject(const char *p, TrussData &data) {
@@ -617,141 +616,141 @@ static ImageSize computeImageSize(double xMin, double xMax, double yMin, double 
     return {wi, hi};
 }
 
-static void drawTruss(Canvas &c, const TrussData &data) {
-    double xMin = 1e9, xMax = -1e9, yMin = 1e9, yMax = -1e9;
+// ---- 2D layout transform shared by PNG and SVG ----
 
-    for (auto &p : data.pieces) {
-        for (auto &pt : p.negative) {
-            if (pt.x < xMin) xMin = pt.x;
-            if (pt.x > xMax) xMax = pt.x;
-            if (pt.y < yMin) yMin = pt.y;
-            if (pt.y > yMax) yMax = pt.y;
-        }
-        for (auto &pt : p.positive) {
-            if (pt.x < xMin) xMin = pt.x;
-            if (pt.x > xMax) xMax = pt.x;
-            if (pt.y < yMin) yMin = pt.y;
-            if (pt.y > yMax) yMax = pt.y;
-        }
+struct ViewTransform {
+    double xMin, yMin, xMax, yMax;
+    double leftM, topM;
+    double scale, extraX, extraY;
+
+    static ViewTransform compute(double xMin_, double xMax_, double yMin_, double yMax_, int imgW, int imgH) {
+        double topM = 35, bottomM = 85, leftM = 85, rightM = 70;
+        double availW = imgW - leftM - rightM;
+        double availH = imgH - topM - bottomM;
+        double dataW = xMax_ - xMin_;
+        double dataH = yMax_ - yMin_;
+        if (dataW < 1) dataW = 1;
+        if (dataH < 1) dataH = 1;
+        double scale_ = fmin(availW / dataW, availH / dataH);
+        double extraX_ = (availW - dataW * scale_) / 2.0;
+        double extraY_ = (availH - dataH * scale_) / 2.0;
+        return {xMin_, yMin_, xMax_, yMax_, leftM, topM, scale_, extraX_, extraY_};
     }
 
+    int tx(double x) const { return (int)round(leftM + extraX + (x - xMin) * scale); }
+    int ty(double y) const { return (int)round(topM + extraY + (yMax - y) * scale); }
+    double txf(double x) const { return leftM + extraX + (x - xMin) * scale; }
+    double tyf(double y) const { return topM + extraY + (yMax - y) * scale; }
+};
+
+// ---- Dimension anchor points (shared by all output formats) ----
+
+struct DimAnchors {
+    double leftEdgeD, rightEdgeD;
+    double bottomEdge, topEdge;
+    double leftHeelBottom;
+    double rightHeelBottom;
+
+    static DimAnchors fromData(const TrussData &data, double yMin, double yMax) {
+        return {0.0, data.span * 100.0, yMin, yMax,
+                yMax - data.leftHeelHeight * 100.0,
+                yMax - data.rightHeelHeight * 100.0};
+    }
+};
+
+struct Rgb { uint8_t r, g, b; };
+static Rgb pieceColor(const std::string &type) {
+    if (type == "TopChord") return {191, 146, 89};
+    if (type == "BottomChord") return {89, 146, 191};
+    return {146, 191, 89};
+}
+
+struct LegendEntry { const char *name; uint8_t r, g, b; };
+static const LegendEntry LEGEND[] = {
+    {"TopChord", 191, 146, 89},
+    {"BottomChord", 89, 146, 191},
+    {"Web", 146, 191, 89}
+};
+static const int LEGEND_COUNT = sizeof(LEGEND) / sizeof(LEGEND[0]);
+
+static void drawTruss(Canvas &c, const TrussData &data) {
+    double xMin, xMax, yMin, yMax;
+    computeTrussBounds(data, xMin, xMax, yMin, yMax);
+
     int cw = c.width(), ch = c.height();
-
-    double topM = 35, bottomM = 85, leftM = 85, rightM = 70;
-    double availW = cw - leftM - rightM;
-    double availH = ch - topM - bottomM;
-    double dataW = xMax - xMin;
-    double dataH = yMax - yMin;
-    if (dataW < 1) dataW = 1;
-    if (dataH < 1) dataH = 1;
-
-    double scale = fmin(availW / dataW, availH / dataH);
-
-    double trussW = dataW * scale;
-    double trussH = dataH * scale;
-    double extraX = (availW - trussW) / 2.0;
-    double extraY = (availH - trussH) / 2.0;
-
-    auto tx = [&](double x) -> int { return (int)round(leftM + extraX + (x - xMin) * scale); };
-    auto ty = [&](double y) -> int { return (int)round(topM + extraY + (yMax - y) * scale); };
+    ViewTransform vt = ViewTransform::compute(xMin, xMax, yMin, yMax, cw, ch);
 
     c.clear(30, 30, 30);
 
     for (auto &p : data.pieces) {
         std::vector<Point> polygon;
         for (auto &pt : p.negative)
-            polygon.push_back({tx(pt.x), ty(pt.y)});
+            polygon.push_back({vt.tx(pt.x), vt.ty(pt.y)});
         for (auto &pt : p.positive)
-            polygon.push_back({tx(pt.x), ty(pt.y)});
+            polygon.push_back({vt.tx(pt.x), vt.ty(pt.y)});
 
-        uint8_t fr, fg, fb;
-        if (p.type == "TopChord") { fr = 191; fg = 146; fb = 89; }
-        else if (p.type == "BottomChord") { fr = 89; fg = 146; fb = 191; }
-        else { fr = 146; fg = 191; fb = 89; }
-
-        c.fillPolygon(polygon, fr, fg, fb, 200);
+        Rgb c2 = pieceColor(p.type);
+        c.fillPolygon(polygon, c2.r, c2.g, c2.b, 200);
         c.strokePolygon(polygon, 255, 255, 255, 255);
     }
 
     // Grid lines
-    auto drawGridLine = [&](double x1, double y1, double x2, double y2) {
-        c.drawLine(tx(x1), ty(y1), tx(x2), ty(y2), 60, 60, 60);
-    };
+    for (double y = ceil(vt.yMin / 100.0) * 100; y <= floor(vt.yMax / 100.0) * 100 + 0.01; y += 500.0)
+        c.drawLine(vt.tx(vt.xMin), vt.ty(y), vt.tx(vt.xMax), vt.ty(y), 60, 60, 60);
+    for (double x = ceil(vt.xMin / 100.0) * 100; x <= floor(vt.xMax / 100.0) * 100 + 0.01; x += 1000.0)
+        c.drawLine(vt.tx(x), vt.ty(vt.yMin), vt.tx(x), vt.ty(vt.yMax), 60, 60, 60);
 
-    for (double y = ceil(yMin / 100.0) * 100; y <= floor(yMax / 100.0) * 100 + 0.01; y += 500.0)
-        drawGridLine(xMin, y, xMax, y);
-    for (double x = ceil(xMin / 100.0) * 100; x <= floor(xMax / 100.0) * 100 + 0.01; x += 1000.0)
-        drawGridLine(x, yMin, x, yMax);
-
-    // ---- Dimension lines (architectural style) ----
+    // Dimension lines (architectural style)
     auto drawHorizDim = [&](double x1d, double x2d, double yAnchor, double offsetY, const std::string &label) {
-        int sx1 = tx(x1d), sx2 = tx(x2d);
-        int syAnchor = ty(yAnchor);
-        int sy = syAnchor + (int)offsetY;
+        int sx1 = vt.tx(x1d), sx2 = vt.tx(x2d);
+        int sy = vt.ty(yAnchor) + (int)offsetY;
         int gap = 3, over = 5, tickD = 5, textGap = 2;
 
-        c.drawLine(sx1, syAnchor + gap, sx1, sy + over, 140, 140, 140);
-        c.drawLine(sx2, syAnchor + gap, sx2, sy + over, 140, 140, 140);
+        c.drawLine(sx1, vt.ty(yAnchor) + gap, sx1, sy + over, 140, 140, 140);
+        c.drawLine(sx2, vt.ty(yAnchor) + gap, sx2, sy + over, 140, 140, 140);
         c.drawLine(sx1, sy, sx2, sy, 180, 180, 180);
         c.drawLine(sx1 - tickD, sy - tickD, sx1 + tickD, sy + tickD, 180, 180, 180);
         c.drawLine(sx2 - tickD, sy + tickD, sx2 + tickD, sy - tickD, 180, 180, 180);
 
         int tw = c.textWidth(label.c_str());
-        int lx = (sx1 + sx2 - tw) / 2;
-        c.drawText(lx, sy + textGap, label.c_str(), 255, 255, 255);
+        c.drawText((sx1 + sx2 - tw) / 2, sy + textGap, label.c_str(), 255, 255, 255);
     };
 
     auto drawVertDim = [&](double y1d, double y2d, double xAnchor, double offsetX, const std::string &label, bool leftSide) {
-        int sy1 = ty(y1d), sy2 = ty(y2d);
-        int sxAnchor = tx(xAnchor);
-        int sx = sxAnchor + (int)offsetX;
+        int sy1 = vt.ty(y1d), sy2 = vt.ty(y2d);
+        int sx = vt.tx(xAnchor) + (int)offsetX;
         int gap = 3, over = 5, tickD = 5;
 
-        c.drawLine(sxAnchor + gap, sy1, sx + over, sy1, 140, 140, 140);
-        c.drawLine(sxAnchor + gap, sy2, sx + over, sy2, 140, 140, 140);
+        c.drawLine(vt.tx(xAnchor) + gap, sy1, sx + over, sy1, 140, 140, 140);
+        c.drawLine(vt.tx(xAnchor) + gap, sy2, sx + over, sy2, 140, 140, 140);
         c.drawLine(sx, sy1, sx, sy2, 180, 180, 180);
         c.drawLine(sx - tickD, sy1 - tickD, sx + tickD, sy1 + tickD, 180, 180, 180);
         c.drawLine(sx - tickD, sy2 - tickD, sx + tickD, sy2 + tickD, 180, 180, 180);
 
         int tw = c.textWidth(label.c_str());
         int midY = (sy1 + sy2) / 2;
-        int lx = leftSide ? (sx - tw - 6) : (sx + 6);
-        c.drawText(lx, midY, label.c_str(), 255, 255, 255);
+        c.drawText(leftSide ? (sx - tw - 6) : (sx + 6), midY, label.c_str(), 255, 255, 255);
     };
 
-    double bottomEdge = yMin;
-    double topEdge = yMax;
-    double leftEdgeD = 0.0;
-    double rightEdgeD = data.span * 100.0;
+    DimAnchors da = DimAnchors::fromData(data, vt.yMin, vt.yMax);
+    drawHorizDim(da.leftEdgeD, da.rightEdgeD, da.bottomEdge, 25.0, formatInches(data.span));
+    drawVertDim(da.bottomEdge, da.topEdge, da.leftEdgeD, -25.0, formatInches(data.height), true);
+    drawVertDim(da.leftHeelBottom, da.topEdge, da.leftEdgeD, -47.0, formatInches(data.leftHeelHeight), true);
+    drawVertDim(da.rightHeelBottom, da.topEdge, da.rightEdgeD, 25.0, formatInches(data.rightHeelHeight), false);
 
-    drawHorizDim(leftEdgeD, rightEdgeD, bottomEdge, 25.0, formatInches(data.span));
-    drawVertDim(bottomEdge, topEdge, leftEdgeD, -25.0, formatInches(data.height), true);
-
-    double leftHeelBottom = topEdge - data.leftHeelHeight * 100.0;
-    drawVertDim(leftHeelBottom, topEdge, leftEdgeD, -47.0, formatInches(data.leftHeelHeight), true);
-
-    double rightHeelBottom = topEdge - data.rightHeelHeight * 100.0;
-    drawVertDim(rightHeelBottom, topEdge, rightEdgeD, 25.0, formatInches(data.rightHeelHeight), false);
-
-    const char *legend[] = {"TopChord", "BottomChord", "Web"};
+    // Legend
     int lx = 10, ly = 10;
-    for (int i = 0; i < 3; i++) {
-        uint8_t lr, lg, lb;
-        if (i == 0) { lr = 191; lg = 146; lb = 89; }
-        else if (i == 1) { lr = 89; lg = 146; lb = 191; }
-        else { lr = 146; lg = 191; lb = 89; }
-
+    for (int i = 0; i < LEGEND_COUNT; i++) {
         for (int dy = 0; dy < 10; dy++)
             for (int dx = 0; dx < 14; dx++)
-                c.setPixel(lx + dx, ly + dy, lr, lg, lb, 200);
-        c.drawText(lx + 18, ly, legend[i], 255, 255, 255);
+                c.setPixel(lx + dx, ly + dy, LEGEND[i].r, LEGEND[i].g, LEGEND[i].b, 200);
+        c.drawText(lx + 18, ly, LEGEND[i].name, 255, 255, 255);
         ly += 16;
     }
 
     // Credits at bottom center
     std::string credits = "TrussGen 2.0 (c) 2026";
-    int cx = (cw - c.textWidth(credits.c_str())) / 2;
-    c.drawText(cx, ch - 12, credits.c_str(), 100, 100, 100);
+    c.drawText((cw - c.textWidth(credits.c_str())) / 2, ch - 12, credits.c_str(), 100, 100, 100);
 }
 
 // ---- SVG output ----
@@ -766,40 +765,12 @@ static std::string colorStr(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255) {
 }
 
 static bool saveSVG(const char *path, const TrussData &data) {
-    double xMin = 1e9, xMax = -1e9, yMin = 1e9, yMax = -1e9;
-    for (auto &p : data.pieces) {
-        for (auto &pt : p.negative) {
-            if (pt.x < xMin) xMin = pt.x;
-            if (pt.x > xMax) xMax = pt.x;
-            if (pt.y < yMin) yMin = pt.y;
-            if (pt.y > yMax) yMax = pt.y;
-        }
-        for (auto &pt : p.positive) {
-            if (pt.x < xMin) xMin = pt.x;
-            if (pt.x > xMax) xMax = pt.x;
-            if (pt.y < yMin) yMin = pt.y;
-            if (pt.y > yMax) yMax = pt.y;
-        }
-    }
+    double xMin, xMax, yMin, yMax;
+    computeTrussBounds(data, xMin, xMax, yMin, yMax);
 
     ImageSize img = computeImageSize(xMin, xMax, yMin, yMax);
     int cw = img.w, ch = img.h;
-    double topM = 35, bottomM = 85, leftM = 85, rightM = 70;
-    double availW = cw - leftM - rightM;
-    double availH = ch - topM - bottomM;
-    double dataW = xMax - xMin;
-    double dataH = yMax - yMin;
-    if (dataW < 1) dataW = 1;
-    if (dataH < 1) dataH = 1;
-    double scale = fmin(availW / dataW, availH / dataH);
-
-    double trussW = dataW * scale;
-    double trussH = dataH * scale;
-    double extraX = (availW - trussW) / 2.0;
-    double extraY = (availH - trussH) / 2.0;
-
-    auto tx = [&](double x) -> double { return leftM + extraX + (x - xMin) * scale; };
-    auto ty = [&](double y) -> double { return topM + extraY + (yMax - y) * scale; };
+    ViewTransform vt = ViewTransform::compute(xMin, xMax, yMin, yMax, cw, ch);
 
     FILE *f = nullptr;
     if (fopen_s(&f, path, "wb") != 0 || !f) return false;
@@ -812,33 +783,28 @@ static bool saveSVG(const char *path, const TrussData &data) {
     for (auto &p : data.pieces) {
         fprintf(f, "<polygon points=\"");
         for (auto &pt : p.negative)
-            fprintf(f, "%.1f,%.1f ", tx(pt.x), ty(pt.y));
+            fprintf(f, "%.1f,%.1f ", vt.txf(pt.x), vt.tyf(pt.y));
         for (auto &pt : p.positive)
-            fprintf(f, "%.1f,%.1f ", tx(pt.x), ty(pt.y));
+            fprintf(f, "%.1f,%.1f ", vt.txf(pt.x), vt.tyf(pt.y));
 
-        uint8_t r, g, b;
-        if (p.type == "TopChord") { r = 191; g = 146; b = 89; }
-        else if (p.type == "BottomChord") { r = 89; g = 146; b = 191; }
-        else { r = 146; g = 191; b = 89; }
-        fprintf(f, "\" fill=\"%s\" stroke=\"white\" stroke-width=\"1\"/>\n", colorStr(r, g, b, 200).c_str());
+        Rgb c2 = pieceColor(p.type);
+        fprintf(f, "\" fill=\"%s\" stroke=\"white\" stroke-width=\"1\"/>\n", colorStr(c2.r, c2.g, c2.b, 200).c_str());
     }
 
     // Grid lines
-    auto gr = [](double x) -> double { return round(x / 100.0) * 100.0; };
-    for (double y = ceil(yMin / 100.0) * 100; y <= floor(yMax / 100.0) * 100 + 0.01; y += 500.0)
-        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#3c3c3c\" stroke-width=\"0.5\" stroke-dasharray=\"4,4\"/>\n", tx(xMin), ty(y), tx(xMax), ty(y));
-    for (double x = ceil(xMin / 100.0) * 100; x <= floor(xMax / 100.0) * 100 + 0.01; x += 1000.0)
-        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#3c3c3c\" stroke-width=\"0.5\" stroke-dasharray=\"4,4\"/>\n", tx(x), ty(yMin), tx(x), ty(yMax));
+    for (double y = ceil(vt.yMin / 100.0) * 100; y <= floor(vt.yMax / 100.0) * 100 + 0.01; y += 500.0)
+        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#3c3c3c\" stroke-width=\"0.5\" stroke-dasharray=\"4,4\"/>\n", vt.txf(vt.xMin), vt.tyf(y), vt.txf(vt.xMax), vt.tyf(y));
+    for (double x = ceil(vt.xMin / 100.0) * 100; x <= floor(vt.xMax / 100.0) * 100 + 0.01; x += 1000.0)
+        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#3c3c3c\" stroke-width=\"0.5\" stroke-dasharray=\"4,4\"/>\n", vt.txf(x), vt.tyf(vt.yMin), vt.txf(x), vt.tyf(vt.yMax));
 
     // Dimension lines
     auto dimSvg = [&](double x1d, double x2d, double yAnchor, double offsetY, const std::string &label) {
-        double sx1 = tx(x1d), sx2 = tx(x2d);
-        double syAnchor = ty(yAnchor);
-        double sy = syAnchor + offsetY;
+        double sx1 = vt.txf(x1d), sx2 = vt.txf(x2d);
+        double sy = vt.tyf(yAnchor) + offsetY;
         double gap = 3, over = 5, tickD = 5;
 
-        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#8c8c8c\" stroke-width=\"0.5\"/>\n", sx1, syAnchor + gap, sx1, sy + over);
-        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#8c8c8c\" stroke-width=\"0.5\"/>\n", sx2, syAnchor + gap, sx2, sy + over);
+        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#8c8c8c\" stroke-width=\"0.5\"/>\n", sx1, vt.tyf(yAnchor) + gap, sx1, sy + over);
+        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#8c8c8c\" stroke-width=\"0.5\"/>\n", sx2, vt.tyf(yAnchor) + gap, sx2, sy + over);
         fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#b4b4b4\" stroke-width=\"0.8\"/>\n", sx1, sy, sx2, sy);
         fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#b4b4b4\" stroke-width=\"0.8\"/>\n", sx1 - tickD, sy - tickD, sx1 + tickD, sy + tickD);
         fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#b4b4b4\" stroke-width=\"0.8\"/>\n", sx2 - tickD, sy + tickD, sx2 + tickD, sy - tickD);
@@ -846,13 +812,12 @@ static bool saveSVG(const char *path, const TrussData &data) {
     };
 
     auto dimVSvg = [&](double y1d, double y2d, double xAnchor, double offsetX, const std::string &label, bool leftSide) {
-        double sy1 = ty(y1d), sy2 = ty(y2d);
-        double sxAnchor = tx(xAnchor);
-        double sx = sxAnchor + offsetX;
+        double sy1 = vt.tyf(y1d), sy2 = vt.tyf(y2d);
+        double sx = vt.txf(xAnchor) + offsetX;
         double gap = 3, over = 5, tickD = 5;
 
-        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#8c8c8c\" stroke-width=\"0.5\"/>\n", sxAnchor + gap, sy1, sx + over, sy1);
-        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#8c8c8c\" stroke-width=\"0.5\"/>\n", sxAnchor + gap, sy2, sx + over, sy2);
+        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#8c8c8c\" stroke-width=\"0.5\"/>\n", vt.txf(xAnchor) + gap, sy1, sx + over, sy1);
+        fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#8c8c8c\" stroke-width=\"0.5\"/>\n", vt.txf(xAnchor) + gap, sy2, sx + over, sy2);
         fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#b4b4b4\" stroke-width=\"0.8\"/>\n", sx, sy1, sx, sy2);
         fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#b4b4b4\" stroke-width=\"0.8\"/>\n", sx - tickD, sy1 - tickD, sx + tickD, sy1 + tickD);
         fprintf(f, "<line x1=\"%.1f\" y1=\"%.1f\" x2=\"%.1f\" y2=\"%.1f\" stroke=\"#b4b4b4\" stroke-width=\"0.8\"/>\n", sx - tickD, sy2 - tickD, sx + tickD, sy2 + tickD);
@@ -863,27 +828,18 @@ static bool saveSVG(const char *path, const TrussData &data) {
         fprintf(f, "<text x=\"%.1f\" y=\"%.1f\" fill=\"white\" font-family=\"monospace\" font-size=\"7\" text-anchor=\"%s\">%s</text>\n", lx, midY + 3, anchor, label.c_str());
     };
 
-    double bottomEdge = yMin, topEdge = yMax;
-    double leftEdgeD = 0.0, rightEdgeD = data.span * 100.0;
-
-    dimSvg(leftEdgeD, rightEdgeD, bottomEdge, 25.0, formatInches(data.span));
-    dimVSvg(bottomEdge, topEdge, leftEdgeD, -25.0, formatInches(data.height), true);
-
-    double leftHeelBottom = topEdge - data.leftHeelHeight * 100.0;
-    dimVSvg(leftHeelBottom, topEdge, leftEdgeD, -47.0, formatInches(data.leftHeelHeight), true);
-
-    double rightHeelBottom = topEdge - data.rightHeelHeight * 100.0;
-    dimVSvg(rightHeelBottom, topEdge, rightEdgeD, 25.0, formatInches(data.rightHeelHeight), false);
+    DimAnchors da = DimAnchors::fromData(data, vt.yMin, vt.yMax);
+    dimSvg(da.leftEdgeD, da.rightEdgeD, da.bottomEdge, 25.0, formatInches(data.span));
+    dimVSvg(da.bottomEdge, da.topEdge, da.leftEdgeD, -25.0, formatInches(data.height), true);
+    dimVSvg(da.leftHeelBottom, da.topEdge, da.leftEdgeD, -47.0, formatInches(data.leftHeelHeight), true);
+    dimVSvg(da.rightHeelBottom, da.topEdge, da.rightEdgeD, 25.0, formatInches(data.rightHeelHeight), false);
 
     // Legend
-    struct { const char *name; uint8_t r, g, b; } leg[] = {
-        {"TopChord", 191, 146, 89}, {"BottomChord", 89, 146, 191}, {"Web", 146, 191, 89}
-    };
     int ly = 10;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < LEGEND_COUNT; i++) {
         fprintf(f, "<rect x=\"10\" y=\"%d\" width=\"14\" height=\"10\" fill=\"%s\" opacity=\"0.78\"/>\n",
-                ly, colorStr(leg[i].r, leg[i].g, leg[i].b).c_str());
-        fprintf(f, "<text x=\"28\" y=\"%d\" fill=\"white\" font-family=\"monospace\" font-size=\"8\">%s</text>\n", ly + 9, leg[i].name);
+                ly, colorStr(LEGEND[i].r, LEGEND[i].g, LEGEND[i].b).c_str());
+        fprintf(f, "<text x=\"28\" y=\"%d\" fill=\"white\" font-family=\"monospace\" font-size=\"8\">%s</text>\n", ly + 9, LEGEND[i].name);
         ly += 16;
     }
 
@@ -962,13 +918,9 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
 
         double halfZ = p.thickness * 50.0;
 
-        uint8_t r, g, b;
-        if (p.type == "TopChord") { r = 191; g = 146; b = 89; }
-        else if (p.type == "BottomChord") { r = 89; g = 146; b = 191; }
-        else { r = 146; g = 191; b = 89; }
-
+        Rgb c2 = pieceColor(p.type);
         fprintf(f, "<Shape><Appearance><Material diffuseColor=\"%.3f %.3f %.3f\"></Material></Appearance>\n",
-                r/255.0, g/255.0, b/255.0);
+                c2.r/255.0, c2.g/255.0, c2.b/255.0);
         fprintf(f, "<IndexedFaceSet solid=\"false\" coordIndex=\"\n");
         for (int i = 0; i < N; i++) fprintf(f, "%d ", i);
         fprintf(f, "-1\n");
@@ -993,60 +945,54 @@ static void writeX3DContent(FILE *f, const TrussData &data) {
         emitLine(x, yMin, x, yMax, gridZ, "0.24 0.24 0.24");
 
     // Dimension lines
-    double bottomEdge = yMin, topEdge = yMax;
-    double leftEdgeD = 0.0, rightEdgeD = data.span * 100.0;
+    DimAnchors da = DimAnchors::fromData(data, yMin, yMax);
     double tick = 50.0, off = 200.0, ext = 50.0;
 
     {
-        double sy = bottomEdge - off;
-        emitLine(leftEdgeD, sy, rightEdgeD, sy, dimZ, "0.7 0.7 0.7");
-        emitLine(leftEdgeD, sy - tick, leftEdgeD, sy + tick, dimZ, "0.7 0.7 0.7");
-        emitLine(rightEdgeD, sy - tick, rightEdgeD, sy + tick, dimZ, "0.7 0.7 0.7");
-        emitLine(leftEdgeD, bottomEdge + 30, leftEdgeD, sy + ext, dimZ, "0.55 0.55 0.55");
-        emitLine(rightEdgeD, bottomEdge + 30, rightEdgeD, sy + ext, dimZ, "0.55 0.55 0.55");
-        emitLabel((leftEdgeD + rightEdgeD) / 2, sy + 80, dimZ, formatInches(data.span).c_str(), 100);
+        double sy = da.bottomEdge - off;
+        emitLine(da.leftEdgeD, sy, da.rightEdgeD, sy, dimZ, "0.7 0.7 0.7");
+        emitLine(da.leftEdgeD, sy - tick, da.leftEdgeD, sy + tick, dimZ, "0.7 0.7 0.7");
+        emitLine(da.rightEdgeD, sy - tick, da.rightEdgeD, sy + tick, dimZ, "0.7 0.7 0.7");
+        emitLine(da.leftEdgeD, da.bottomEdge + 30, da.leftEdgeD, sy + ext, dimZ, "0.55 0.55 0.55");
+        emitLine(da.rightEdgeD, da.bottomEdge + 30, da.rightEdgeD, sy + ext, dimZ, "0.55 0.55 0.55");
+        emitLabel((da.leftEdgeD + da.rightEdgeD) / 2, sy + 80, dimZ, formatInches(data.span).c_str(), 100);
     }
 
     {
-        double sx = leftEdgeD - off;
-        emitLine(sx, bottomEdge, sx, topEdge, dimZ, "0.7 0.7 0.7");
-        emitLine(sx - tick, bottomEdge, sx + tick, bottomEdge, dimZ, "0.7 0.7 0.7");
-        emitLine(sx - tick, topEdge, sx + tick, topEdge, dimZ, "0.7 0.7 0.7");
-        emitLine(leftEdgeD + 30, bottomEdge, sx + ext, bottomEdge, dimZ, "0.55 0.55 0.55");
-        emitLine(leftEdgeD + 30, topEdge, sx + ext, topEdge, dimZ, "0.55 0.55 0.55");
-        emitLabel(sx - 80, (bottomEdge + topEdge) / 2, dimZ, formatInches(data.height).c_str(), 100);
+        double sx = da.leftEdgeD - off;
+        emitLine(sx, da.bottomEdge, sx, da.topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, da.bottomEdge, sx + tick, da.bottomEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, da.topEdge, sx + tick, da.topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(da.leftEdgeD + 30, da.bottomEdge, sx + ext, da.bottomEdge, dimZ, "0.55 0.55 0.55");
+        emitLine(da.leftEdgeD + 30, da.topEdge, sx + ext, da.topEdge, dimZ, "0.55 0.55 0.55");
+        emitLabel(sx - 80, (da.bottomEdge + da.topEdge) / 2, dimZ, formatInches(data.height).c_str(), 100);
     }
 
     {
-        double leftHeelBottom = topEdge - data.leftHeelHeight * 100.0;
-        double sx = leftEdgeD - off * 2;
-        emitLine(sx, leftHeelBottom, sx, topEdge, dimZ, "0.7 0.7 0.7");
-        emitLine(sx - tick, leftHeelBottom, sx + tick, leftHeelBottom, dimZ, "0.7 0.7 0.7");
-        emitLine(sx - tick, topEdge, sx + tick, topEdge, dimZ, "0.7 0.7 0.7");
-        emitLine(leftEdgeD + 30, leftHeelBottom, sx + ext, leftHeelBottom, dimZ, "0.55 0.55 0.55");
-        emitLine(leftEdgeD + 30, topEdge, sx + ext, topEdge, dimZ, "0.55 0.55 0.55");
-        emitLabel(sx - 80, (leftHeelBottom + topEdge) / 2, dimZ, formatInches(data.leftHeelHeight).c_str(), 100);
+        double sx = da.leftEdgeD - off * 2;
+        emitLine(sx, da.leftHeelBottom, sx, da.topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, da.leftHeelBottom, sx + tick, da.leftHeelBottom, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, da.topEdge, sx + tick, da.topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(da.leftEdgeD + 30, da.leftHeelBottom, sx + ext, da.leftHeelBottom, dimZ, "0.55 0.55 0.55");
+        emitLine(da.leftEdgeD + 30, da.topEdge, sx + ext, da.topEdge, dimZ, "0.55 0.55 0.55");
+        emitLabel(sx - 80, (da.leftHeelBottom + da.topEdge) / 2, dimZ, formatInches(data.leftHeelHeight).c_str(), 100);
     }
 
     {
-        double rightHeelBottom = topEdge - data.rightHeelHeight * 100.0;
-        double sx = rightEdgeD + off;
-        emitLine(sx, rightHeelBottom, sx, topEdge, dimZ, "0.7 0.7 0.7");
-        emitLine(sx - tick, rightHeelBottom, sx + tick, rightHeelBottom, dimZ, "0.7 0.7 0.7");
-        emitLine(sx - tick, topEdge, sx + tick, topEdge, dimZ, "0.7 0.7 0.7");
-        emitLine(rightEdgeD - 30, rightHeelBottom, sx - ext, rightHeelBottom, dimZ, "0.55 0.55 0.55");
-        emitLine(rightEdgeD - 30, topEdge, sx - ext, topEdge, dimZ, "0.55 0.55 0.55");
-        emitLabel(sx + 80, (rightHeelBottom + topEdge) / 2, dimZ, formatInches(data.rightHeelHeight).c_str(), 100);
+        double sx = da.rightEdgeD + off;
+        emitLine(sx, da.rightHeelBottom, sx, da.topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, da.rightHeelBottom, sx + tick, da.rightHeelBottom, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, da.topEdge, sx + tick, da.topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(da.rightEdgeD - 30, da.rightHeelBottom, sx - ext, da.rightHeelBottom, dimZ, "0.55 0.55 0.55");
+        emitLine(da.rightEdgeD - 30, da.topEdge, sx - ext, da.topEdge, dimZ, "0.55 0.55 0.55");
+        emitLabel(sx + 80, (da.rightHeelBottom + da.topEdge) / 2, dimZ, formatInches(data.rightHeelHeight).c_str(), 100);
     }
 
     // Legend
-    struct { const char *name; uint8_t r, g, b; } leg[] = {
-        {"TopChord", 191, 146, 89}, {"BottomChord", 89, 146, 191}, {"Web", 146, 191, 89}
-    };
     double legY = yMax + 300.0;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < LEGEND_COUNT; i++) {
         double lx = xMin + 100.0;
-        emitLabel(lx, legY + 30, dimZ, leg[i].name, 60);
+        emitLabel(lx, legY + 30, dimZ, LEGEND[i].name, 60);
         legY += 100.0;
     }
 
