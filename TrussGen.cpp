@@ -593,16 +593,21 @@ static ImageSize computeImageSize(double xMin, double xMax, double yMin, double 
 
     const double ppi = 13.0;
     const double leftM = 85, rightM = 70, topM = 35, bottomM = 85;
+    const int minW = 600, minH = 200, maxW = 2500, maxH = 1500;
 
-    int w = (int)round((dataW / 100.0) * ppi + leftM + rightM);
-    int h = (int)round((dataH / 100.0) * ppi + topM + bottomM);
+    double w = (dataW / 100.0) * ppi + leftM + rightM;
+    double h = (dataH / 100.0) * ppi + topM + bottomM;
 
-    if (w < 600) w = 600;
-    if (h < 200) h = 200;
-    if (w > 2500) w = 2500;
-    if (h > 1500) h = 1500;
+    if (w > maxW || h > maxH) {
+        double s = fmin(maxW / w, maxH / h);
+        w *= s;
+        h *= s;
+    }
 
-    return {w, h};
+    int wi = (int)round(fmax(w, (double)minW));
+    int hi = (int)round(fmax(h, (double)minH));
+
+    return {wi, hi};
 }
 
 static void drawTruss(Canvas &c, const TrussData &data) {
