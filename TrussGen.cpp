@@ -131,6 +131,7 @@ struct TrussPiece {
     std::string label;
     std::vector<Point> negative;
     std::vector<Point> positive;
+    double thickness = 1.5;
 };
 
 struct TrussData {
@@ -138,6 +139,7 @@ struct TrussData {
     double height = 0;
     double leftHeelHeight = 0;
     double rightHeelHeight = 0;
+    double thickness = 1.5;
     std::vector<TrussPiece> pieces;
 };
 
@@ -224,6 +226,10 @@ static const char *parsePieceValue(const char *p, TrussPiece &piece, const std::
         std::string val;
         p = parseString(p, val);
         piece.label = val;
+    } else if (key == "UserThickness") {
+        double val;
+        p = parseNumber(p, val);
+        piece.thickness = val;
     } else if (key == "EndCap") {
         std::vector<Point> neg, pos;
         p = parseEndCapObject(p, neg, pos);
@@ -313,13 +319,14 @@ static const char *parsePointArray(const char *p, std::vector<Point> &out) {
 
 static const char *parseValue(const char *p, TrussData &data, const std::string &key) {
     p = skipWS(p);
-    if (key == "Span" || key == "OverallTrussHeight" || key == "LeftHeelHeight" || key == "RightHeelHeight") {
+    if (key == "Span" || key == "OverallTrussHeight" || key == "LeftHeelHeight" || key == "RightHeelHeight" || key == "Thickness") {
         double val = 0;
         p = parseNumber(p, val);
         if (key == "Span") data.span = val;
         else if (key == "OverallTrussHeight") data.height = val;
         else if (key == "LeftHeelHeight") data.leftHeelHeight = val;
         else if (key == "RightHeelHeight") data.rightHeelHeight = val;
+        else if (key == "Thickness") data.thickness = val;
     } else if (key == "PieceData") {
         p = skipWS(p);
         if (*p == '[') {
@@ -888,11 +895,199 @@ static bool saveSVG(const char *path, const TrussData &data) {
     return true;
 }
 
+// ---- X3D scene content (shared between .x3d and .html) ----
+
+static void writeX3DContent(FILE *f, const TrussData &data) {
+    double xMin, xMax, yMin, yMax;
+    computeTrussBounds(data, xMin, xMax, yMin, yMax);
+
+    double cx = (xMin + xMax) / 2.0;
+    double cy = (yMin + yMax) / 2.0;
+    double span = xMax - xMin;
+    double dist = span * 1.8;
+
+    double vx = cx + dist * 0.5;
+    double vy = cy + dist * 0.35;
+    double vz = dist;
+
+    double lx = cx - vx, ly = cy - vy, lz = 0 - vz;
+    double len = sqrt(lx*lx + ly*ly + lz*lz);
+    lx /= len; ly /= len; lz /= len;
+    double dot = -lz;
+    double angle = acos(fmin(fmax(dot, -1.0), 1.0));
+    double ax = -ly, ay = lx, az = 0;
+    double alen = sqrt(ax*ax + ay*ay);
+    if (alen > 0.0001) { ax /= alen; ay /= alen; }
+    else { ax = 0; ay = 1; az = 0; }
+
+    fprintf(f, "<Scene>\n");
+    fprintf(f, "<Background skyColor=\"0.12 0.12 0.12\"/>\n");
+    fprintf(f, "<Viewpoint position=\"%.2f %.2f %.2f\" orientation=\"%.4f %.4f %.4f %.4f\" fieldOfView=\"0.5\"/>\n",
+            vx, vy, vz, ax, ay, az, angle);
+
+    double halfMaxZ = data.thickness * 50.0;
+    double gridZ = -halfMaxZ - 50.0;
+    double dimZ = halfMaxZ + 50.0;
+
+    auto emitLine = [&](double x1, double y1, double x2, double y2, double z, const char *color) {
+        fprintf(f, "<Shape><Appearance><Material emissiveColor=\"%s\"/></Appearance>"
+                "<IndexedLineSet coordIndex=\"0 1 -1\">"
+                "<Coordinate point=\"%.0f %.0f %.3f %.0f %.0f %.3f\"/>"
+                "</IndexedLineSet></Shape>\n",
+                color, x1, y1, z, x2, y2, z);
+    };
+
+    auto emitLabel = [&](double x, double y, double z, const char *text, double size) {
+        fprintf(f, "<Billboard axisOfRotation=\"0 0 0\">"
+                "<Transform translation=\"%.0f %.0f %.3f\">"
+                "<Shape><Appearance><Material emissiveColor=\"1 1 1\"/></Appearance>"
+                "<Text string='\"%s\"'><FontStyle size=\"%.0f\" family=\"'SANS'\"/></Text>"
+                "</Shape></Transform></Billboard>\n", x, y, z, text, size);
+    };
+
+    // Pieces
+    for (auto &p : data.pieces) {
+        std::vector<Point> pts = p.negative;
+        pts.insert(pts.end(), p.positive.begin(), p.positive.end());
+        int N = (int)pts.size();
+        if (N < 3) continue;
+
+        double halfZ = p.thickness * 50.0;
+
+        uint8_t r, g, b;
+        if (p.type == "TopChord") { r = 191; g = 146; b = 89; }
+        else if (p.type == "BottomChord") { r = 89; g = 146; b = 191; }
+        else { r = 146; g = 191; b = 89; }
+
+        fprintf(f, "<Shape><Appearance><Material diffuseColor=\"%.3f %.3f %.3f\" transparency=\"0.22\"/></Appearance>\n",
+                r/255.0, g/255.0, b/255.0);
+        fprintf(f, "<IndexedFaceSet solid=\"false\" coordIndex=\"\n");
+        for (int i = 0; i < N; i++) fprintf(f, "%d ", i);
+        fprintf(f, "-1\n");
+        for (int i = N - 1; i >= 0; i--) fprintf(f, "%d ", i + N);
+        fprintf(f, "-1\n");
+        for (int i = 0; i < N; i++) {
+            int j = (i + 1) % N;
+            fprintf(f, "%d %d %d %d -1\n", i, j, j + N, i + N);
+        }
+        fprintf(f, "\"><Coordinate point=\"\n");
+        for (int i = 0; i < N; i++)
+            fprintf(f, "%.0f %.0f %.3f\n", (double)pts[i].x, (double)pts[i].y, halfZ);
+        for (int i = 0; i < N; i++)
+            fprintf(f, "%.0f %.0f %.3f\n", (double)pts[i].x, (double)pts[i].y, -halfZ);
+        fprintf(f, "\"/></IndexedFaceSet></Shape>\n");
+    }
+
+    // Grid lines
+    for (double y = ceil(yMin / 100.0) * 100; y <= floor(yMax / 100.0) * 100 + 0.01; y += 500.0)
+        emitLine(xMin, y, xMax, y, gridZ, "0.24 0.24 0.24");
+    for (double x = ceil(xMin / 100.0) * 100; x <= floor(xMax / 100.0) * 100 + 0.01; x += 1000.0)
+        emitLine(x, yMin, x, yMax, gridZ, "0.24 0.24 0.24");
+
+    // Dimension lines
+    double bottomEdge = yMin, topEdge = yMax;
+    double leftEdgeD = 0.0, rightEdgeD = data.span * 100.0;
+    double tick = 50.0, off = 200.0, ext = 50.0;
+
+    {
+        double sy = bottomEdge - off;
+        emitLine(leftEdgeD, sy, rightEdgeD, sy, dimZ, "0.7 0.7 0.7");
+        emitLine(leftEdgeD, sy - tick, leftEdgeD, sy + tick, dimZ, "0.7 0.7 0.7");
+        emitLine(rightEdgeD, sy - tick, rightEdgeD, sy + tick, dimZ, "0.7 0.7 0.7");
+        emitLine(leftEdgeD, bottomEdge + 30, leftEdgeD, sy + ext, dimZ, "0.55 0.55 0.55");
+        emitLine(rightEdgeD, bottomEdge + 30, rightEdgeD, sy + ext, dimZ, "0.55 0.55 0.55");
+        emitLabel((leftEdgeD + rightEdgeD) / 2, sy + 80, dimZ, formatInches(data.span).c_str(), 100);
+    }
+
+    {
+        double sx = leftEdgeD - off;
+        emitLine(sx, bottomEdge, sx, topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, bottomEdge, sx + tick, bottomEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, topEdge, sx + tick, topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(leftEdgeD + 30, bottomEdge, sx + ext, bottomEdge, dimZ, "0.55 0.55 0.55");
+        emitLine(leftEdgeD + 30, topEdge, sx + ext, topEdge, dimZ, "0.55 0.55 0.55");
+        emitLabel(sx - 80, (bottomEdge + topEdge) / 2, dimZ, formatInches(data.height).c_str(), 100);
+    }
+
+    {
+        double leftHeelBottom = topEdge - data.leftHeelHeight * 100.0;
+        double sx = leftEdgeD - off * 2;
+        emitLine(sx, leftHeelBottom, sx, topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, leftHeelBottom, sx + tick, leftHeelBottom, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, topEdge, sx + tick, topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(leftEdgeD + 30, leftHeelBottom, sx + ext, leftHeelBottom, dimZ, "0.55 0.55 0.55");
+        emitLine(leftEdgeD + 30, topEdge, sx + ext, topEdge, dimZ, "0.55 0.55 0.55");
+        emitLabel(sx - 80, (leftHeelBottom + topEdge) / 2, dimZ, formatInches(data.leftHeelHeight).c_str(), 100);
+    }
+
+    {
+        double rightHeelBottom = topEdge - data.rightHeelHeight * 100.0;
+        double sx = rightEdgeD + off;
+        emitLine(sx, rightHeelBottom, sx, topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, rightHeelBottom, sx + tick, rightHeelBottom, dimZ, "0.7 0.7 0.7");
+        emitLine(sx - tick, topEdge, sx + tick, topEdge, dimZ, "0.7 0.7 0.7");
+        emitLine(rightEdgeD - 30, rightHeelBottom, sx - ext, rightHeelBottom, dimZ, "0.55 0.55 0.55");
+        emitLine(rightEdgeD - 30, topEdge, sx - ext, topEdge, dimZ, "0.55 0.55 0.55");
+        emitLabel(sx + 80, (rightHeelBottom + topEdge) / 2, dimZ, formatInches(data.rightHeelHeight).c_str(), 100);
+    }
+
+    // Legend
+    struct { const char *name; uint8_t r, g, b; } leg[] = {
+        {"TopChord", 191, 146, 89}, {"BottomChord", 89, 146, 191}, {"Web", 146, 191, 89}
+    };
+    double legY = yMax + 300.0;
+    for (int i = 0; i < 3; i++) {
+        double lx = xMin + 100.0;
+        fprintf(f, "<Transform translation=\"%.0f %.0f %.3f\">"
+                "<Shape><Appearance><Material diffuseColor=\"%.3f %.3f %.3f\"/></Appearance>"
+                "<Box size=\"100 60 0.1\"/></Shape></Transform>\n",
+                lx + 50, legY + 30, dimZ, leg[i].r/255.0, leg[i].g/255.0, leg[i].b/255.0);
+        emitLabel(lx + 150, legY + 30, dimZ, leg[i].name, 60);
+        legY += 100.0;
+    }
+
+    // Credits
+    emitLabel((xMin + xMax) / 2, yMin - 300.0, dimZ, "TrussGen 2.0 (c) 2026", 60);
+
+    fprintf(f, "</Scene>\n");
+}
+
+static bool saveX3D(const char *path, const TrussData &data) {
+    FILE *f = nullptr;
+    if (fopen_s(&f, path, "wb") != 0 || !f) return false;
+    fprintf(f, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+    fprintf(f, "<X3D profile=\"Immersive\" version=\"3.3\">\n");
+    writeX3DContent(f, data);
+    fprintf(f, "</X3D>\n");
+    fclose(f);
+    return true;
+}
+
+static bool saveHTML(const char *path, const TrussData &data) {
+    FILE *f = nullptr;
+    if (fopen_s(&f, path, "wb") != 0 || !f) return false;
+    fprintf(f,
+        "<!DOCTYPE html>\n"
+        "<html><head>\n"
+        "<meta charset=\"UTF-8\">\n"
+        "<title>TrussGen - 3D Truss Viewer</title>\n"
+        "<script src=\"https://cdn.jsdelivr.net/npm/x3dom@1.8.2/dist/x3dom.min.js\"></script>\n"
+        "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/x3dom@1.8.2/dist/x3dom.min.css\">\n"
+        "<style>body{margin:0;overflow:hidden;background:#1e1e1e}x3d{width:100vw;height:100vh;border:none}</style>\n"
+        "</head><body>\n"
+        "<x3d width=\"100%%\" height=\"100%%\">\n"
+    );
+    writeX3DContent(f, data);
+    fprintf(f, "</x3d>\n</body></html>\n");
+    fclose(f);
+    return true;
+}
+
 // ---- Main ----
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        fprintf(stderr, "Usage: TrussGen.exe input.json [output.png|output.svg]\n");
+        fprintf(stderr, "Usage: TrussGen.exe input.json [output.png|output.svg|output.x3d|output.html]\n");
         return 1;
     }
 
@@ -903,13 +1098,15 @@ int main(int argc, char *argv[]) {
         }
         if (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0) {
             fprintf(stdout,
-                "TrussGen 2.0 - Floor truss PNG/SVG generator\n"
+                "TrussGen 2.0 - Floor truss PNG/SVG/X3D/HTML generator\n"
                 "\n"
-                "Usage: TrussGen.exe input.json [output.png|output.svg]\n"
+                "Usage: TrussGen.exe input.json [output.png|output.svg|output.x3d|output.html]\n"
                 "\n"
                 "  input.json   Path to truss JSON file\n"
                 "  output.png   Output PNG file (default: input name + .png)\n"
                 "  output.svg   Output SVG file\n"
+                "  output.x3d   Output X3D file\n"
+                "  output.html  Output HTML page with embedded interactive 3D\n"
                 "\n"
                 "Options:\n"
                 "  -h, --help     Show this help\n"
@@ -934,9 +1131,23 @@ int main(int argc, char *argv[]) {
 
     // Detect format from output path extension
     const char *outExt = strrchr(outputPath.c_str(), '.');
+    bool isHtml = outExt && (_stricmp(outExt, ".html") == 0);
+    bool isX3d = outExt && (_stricmp(outExt, ".x3d") == 0);
     bool isSvg = outExt && (_stricmp(outExt, ".svg") == 0);
 
-    if (isSvg) {
+    if (isHtml) {
+        if (!saveHTML(outputPath.c_str(), data)) {
+            fprintf(stderr, "ERROR: Failed to save %s\n", outputPath.c_str());
+            return 1;
+        }
+        fprintf(stdout, "%s\n", outputPath.c_str());
+    } else if (isX3d) {
+        if (!saveX3D(outputPath.c_str(), data)) {
+            fprintf(stderr, "ERROR: Failed to save %s\n", outputPath.c_str());
+            return 1;
+        }
+        fprintf(stdout, "%s\n", outputPath.c_str());
+    } else if (isSvg) {
         if (!saveSVG(outputPath.c_str(), data)) {
             fprintf(stderr, "ERROR: Failed to save %s\n", outputPath.c_str());
             return 1;
