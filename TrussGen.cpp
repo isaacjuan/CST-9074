@@ -565,6 +565,46 @@ static std::string formatInches(double v) {
     return std::string(buf);
 }
 
+static void computeTrussBounds(const TrussData &data, double &xMin, double &xMax, double &yMin, double &yMax) {
+    xMin = 1e9; xMax = -1e9; yMin = 1e9; yMax = -1e9;
+    for (auto &p : data.pieces) {
+        for (auto &pt : p.negative) {
+            if (pt.x < xMin) xMin = pt.x;
+            if (pt.x > xMax) xMax = pt.x;
+            if (pt.y < yMin) yMin = pt.y;
+            if (pt.y > yMax) yMax = pt.y;
+        }
+        for (auto &pt : p.positive) {
+            if (pt.x < xMin) xMin = pt.x;
+            if (pt.x > xMax) xMax = pt.x;
+            if (pt.y < yMin) yMin = pt.y;
+            if (pt.y > yMax) yMax = pt.y;
+        }
+    }
+}
+
+struct ImageSize { int w, h; };
+
+static ImageSize computeImageSize(double xMin, double xMax, double yMin, double yMax) {
+    double dataW = xMax - xMin;
+    double dataH = yMax - yMin;
+    if (dataW < 1) dataW = 1;
+    if (dataH < 1) dataH = 1;
+
+    const double ppi = 13.0;
+    const double leftM = 85, rightM = 70, topM = 35, bottomM = 85;
+
+    int w = (int)round((dataW / 100.0) * ppi + leftM + rightM);
+    int h = (int)round((dataH / 100.0) * ppi + topM + bottomM);
+
+    if (w < 600) w = 600;
+    if (h < 200) h = 200;
+    if (w > 2500) w = 2500;
+    if (h > 1500) h = 1500;
+
+    return {w, h};
+}
+
 static void drawTruss(Canvas &c, const TrussData &data) {
     double xMin = 1e9, xMax = -1e9, yMin = 1e9, yMax = -1e9;
 
@@ -690,6 +730,11 @@ static void drawTruss(Canvas &c, const TrussData &data) {
         c.drawText(lx + 18, ly, legend[i], 255, 255, 255);
         ly += 16;
     }
+
+    // Credits at bottom center
+    std::string credits = "TrussGen 2.0 (c) 2026";
+    int cx = (cw - c.textWidth(credits.c_str())) / 2;
+    c.drawText(cx, ch - 12, credits.c_str(), 100, 100, 100);
 }
 
 // ---- SVG output ----
@@ -720,7 +765,8 @@ static bool saveSVG(const char *path, const TrussData &data) {
         }
     }
 
-    int cw = 1600, ch = 430;
+    ImageSize img = computeImageSize(xMin, xMax, yMin, yMax);
+    int cw = img.w, ch = img.h;
     double topM = 35, bottomM = 85, leftM = 85, rightM = 70;
     double availW = cw - leftM - rightM;
     double availH = ch - topM - bottomM;
@@ -819,6 +865,9 @@ static bool saveSVG(const char *path, const TrussData &data) {
         ly += 16;
     }
 
+    // Credits at bottom center
+    fprintf(f, "<text x=\"%d\" y=\"%d\" fill=\"#646464\" font-family=\"monospace\" font-size=\"7\" text-anchor=\"middle\">TrussGen 2.0 (c) 2026</text>\n", cw / 2, ch - 5);
+
     fprintf(f, "</svg>\n");
     fclose(f);
     return true;
@@ -834,12 +883,12 @@ int main(int argc, char *argv[]) {
 
     if (argc == 2) {
         if (strcmp(argv[1], "--version") == 0 || strcmp(argv[1], "-v") == 0) {
-            fprintf(stdout, "TrussGen 1.0\n");
+            fprintf(stdout, "TrussGen 2.0\n");
             return 0;
         }
         if (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0) {
             fprintf(stdout,
-                "TrussGen 1.0 - Floor truss PNG/SVG generator\n"
+                "TrussGen 2.0 - Floor truss PNG/SVG generator\n"
                 "\n"
                 "Usage: TrussGen.exe input.json [output.png|output.svg]\n"
                 "\n"
@@ -883,7 +932,10 @@ int main(int argc, char *argv[]) {
         ULONG_PTR gdiplusToken;
         Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 
-        Canvas canvas(1600, 430);
+        double xMin, xMax, yMin, yMax;
+        computeTrussBounds(data, xMin, xMax, yMin, yMax);
+        ImageSize img = computeImageSize(xMin, xMax, yMin, yMax);
+        Canvas canvas(img.w, img.h);
         drawTruss(canvas, data);
 
         int wlen = MultiByteToWideChar(CP_UTF8, 0, outputPath.c_str(), -1, NULL, 0);
