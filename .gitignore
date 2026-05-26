@@ -1,0 +1,14 @@
+build/
+dist/
+dist-gen/
+dist-trussgen/
+*.obj
+*.ilk
+*.pdb
+*.zip
+TrussGen.exe
+TrussGen_dbg.exe
+*.png
+*.svg
+out.*
+.vscode/
