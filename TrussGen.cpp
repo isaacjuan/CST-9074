@@ -640,8 +640,13 @@ static void drawTruss(Canvas &c, const TrussData &data) {
 
     double scale = fmin(availW / dataW, availH / dataH);
 
-    auto tx = [&](double x) -> int { return (int)round(leftM + (x - xMin) * scale); };
-    auto ty = [&](double y) -> int { return (int)round(topM + (yMax - y) * scale); };
+    double trussW = dataW * scale;
+    double trussH = dataH * scale;
+    double extraX = (availW - trussW) / 2.0;
+    double extraY = (availH - trussH) / 2.0;
+
+    auto tx = [&](double x) -> int { return (int)round(leftM + extraX + (x - xMin) * scale); };
+    auto ty = [&](double y) -> int { return (int)round(topM + extraY + (yMax - y) * scale); };
 
     c.clear(30, 30, 30);
 
@@ -781,8 +786,13 @@ static bool saveSVG(const char *path, const TrussData &data) {
     if (dataH < 1) dataH = 1;
     double scale = fmin(availW / dataW, availH / dataH);
 
-    auto tx = [&](double x) -> double { return leftM + (x - xMin) * scale; };
-    auto ty = [&](double y) -> double { return topM + (yMax - y) * scale; };
+    double trussW = dataW * scale;
+    double trussH = dataH * scale;
+    double extraX = (availW - trussW) / 2.0;
+    double extraY = (availH - trussH) / 2.0;
+
+    auto tx = [&](double x) -> double { return leftM + extraX + (x - xMin) * scale; };
+    auto ty = [&](double y) -> double { return topM + extraY + (yMax - y) * scale; };
 
     FILE *f = nullptr;
     if (fopen_s(&f, path, "wb") != 0 || !f) return false;
